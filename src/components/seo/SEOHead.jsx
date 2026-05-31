@@ -38,7 +38,7 @@ const SEO_DATA = {
     },
   },
   de: {
-    '/': {
+    '/': '/home'
       title: 'Reisetür 237 — Internationale Mobilitätsagentur | Yaoundé, Kamerun',
       description: 'Reisetür 237 begleitet kamerunische Kandidaten nach Deutschland, Malta und Polen. Deutschkurse, Visumassistenz, Ausbildung Pflege.',
       keywords: 'Reisetür 237, internationale Mobilität Kamerun, Visum Deutschland Kamerun, Ausbildung Pflege, Deutschkurs Yaoundé',
