@@ -9,7 +9,7 @@ const NAVY = '#1A1A1A', RED = '#C0392B', GOLD = '#C8A84B'
 
 export const ALL_ARTICLES = [
   {
-    id:'1', slug:'ausbildung-pflege-cameroun-guide',
+    id:'1', image:'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=700&q=80', slug:'ausbildung-pflege-cameroun-guide',
     title_fr:'Guide complet : Partir en Ausbildung Pflege depuis le Cameroun',
     title_de:'Vollständiger Leitfaden: Ausbildung Pflege aus Kamerun',
     title_en:'Complete Guide: Ausbildung Pflege from Cameroon',
