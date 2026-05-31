@@ -1,0 +1,63 @@
+/* ── Performance CSS — Reisetür 237 ── */
+
+/* Réduire animations sur connexions lentes ou préférences */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Images lazy loading */
+img {
+  loading: lazy;
+  content-visibility: auto;
+}
+
+/* Optimisation rendu texte */
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Contenus hors écran — ne pas rendre */
+.offscreen {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 500px;
+}
+
+/* Scrollbar légère */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: #f1f5f9; }
+::-webkit-scrollbar-thumb { background: #1B3E6F; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #C0392B; }
+
+/* Skeleton loading */
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 8px;
+}
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+/* Focus visible pour accessibilité */
+:focus-visible {
+  outline: 2px solid #C8A84B;
+  outline-offset: 2px;
+}
+
+/* Transitions globales douces */
+a, button { transition: all 0.15s ease; }
+
+/* Mobile — éviter le zoom sur les inputs iOS */
+@media (max-width: 768px) {
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+}

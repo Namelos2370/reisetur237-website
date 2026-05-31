@@ -1,0 +1,61 @@
+{
+  "nav": {
+    "home": "Accueil", "services": "Nos Services",
+    "certifications": "Certifications", "partnerships": "Partenariats",
+    "blog": "Blog", "contact": "Contact / Inscription"
+  },
+  "hero": {
+    "badge": "Agence de Mobilité Internationale",
+    "title": "Votre passerelle vers l'Europe",
+    "subtitle": "Reisetür 237 vous accompagne dans vos projets académiques et professionnels vers l'Allemagne, Malte et la Pologne.",
+    "cta_primary": "Déposer ma candidature",
+    "cta_secondary": "Découvrir nos services",
+    "destinations": "Destinations couvertes"
+  },
+  "stats": {
+    "candidates": "Candidats accompagnés",
+    "partners": "Partenaires européens",
+    "countries": "Pays de destination",
+    "success": "Taux de réussite"
+  },
+  "services": {
+    "title": "Nos Domaines d'Expertise",
+    "subtitle": "Un accompagnement complet, de l'orientation au départ",
+    "visa": { "title": "Assistance Visa & Migration", "desc": "Accompagnement complet dans vos démarches consulaires et migratoires vers l'Allemagne, Malte et la Pologne." },
+    "orientation": { "title": "Conseil & Orientation", "desc": "Évaluation de votre profil, identification des programmes adaptés et construction de votre dossier de candidature." },
+    "ausbildung": { "title": "Ausbildung Pflege", "desc": "Préparation et accompagnement pour les programmes de formation en soins infirmiers en Allemagne." },
+    "language": { "title": "Formation Linguistique", "desc": "Cours d'allemand certifiés niveaux A1 à C1, préparation aux examens officiels et simulations." }
+  },
+  "destinations": {
+    "title": "Nos Destinations", "subtitle": "Trois pays, des milliers d'opportunités",
+    "germany": { "name": "Allemagne", "desc": "Ausbildung Pflege, programmes universitaires, visa de travail qualifié" },
+    "malta":   { "name": "Malte",     "desc": "Programmes anglophones, études supérieures, opportunités professionnelles" },
+    "poland":  { "name": "Pologne",   "desc": "Programmes académiques, coût de vie accessible, intégration européenne" }
+  },
+  "certifications": {
+    "title": "Certifications Linguistiques",
+    "subtitle": "Des examens reconnus internationalement",
+    "desc": "Centre d'examen agréé, nous préparons et organisons le passage des certifications officielles en langue allemande.",
+    "levels": "Niveaux disponibles", "cta": "Tester mon niveau"
+  },
+  "partnerships": {
+    "title": "Nos Partenariats", "subtitle": "Des collaborations institutionnelles en Europe",
+    "desc": "Reisetür 237 collabore avec des institutions partenaires reconnues en Allemagne et en Europe pour garantir la qualité de chaque placement."
+  },
+  "blog": {
+    "title": "Blog & Actualités", "subtitle": "Informations, guides et témoignages",
+    "read_more": "Lire la suite", "all_articles": "Tous les articles"
+  },
+  "contact": {
+    "title": "Déposez votre Candidature", "subtitle": "Un conseiller vous recontacte sous 48h",
+    "name": "Nom complet", "email": "Adresse email", "phone": "Téléphone (WhatsApp)",
+    "destination": "Destination visée", "program": "Type de programme", "message": "Votre message",
+    "submit": "Envoyer ma demande", "success": "Votre demande a été envoyée avec succès !",
+    "select_destination": "Choisir une destination", "select_program": "Choisir un programme"
+  },
+  "footer": {
+    "tagline": "Votre mobilité internationale, notre mission.",
+    "legal": "Mentions légales", "privacy": "Confidentialité", "rights": "Tous droits réservés"
+  },
+  "common": { "learn_more": "En savoir plus", "back_top": "Retour en haut", "loading": "Chargement..." }
+}

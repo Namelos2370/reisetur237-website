@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Bloquer les espaces privés
+Disallow: /candidate/dashboard
+Disallow: /admin/
+
+# Sitemap
+Sitemap: https://www.reisetur237.com/sitemap.xml
+
+# Délai entre requêtes (bots)
+Crawl-delay: 10

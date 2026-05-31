@@ -1,0 +1,28 @@
+# Dépendances
+node_modules/
+.pnpm-store/
+
+# Build
+dist/
+dist-ssr/
+
+# Variables d'environnement — NE PAS COMMITTER
+.env
+.env.local
+.env.production
+
+# Logs
+*.log
+npm-debug.log*
+
+# Système
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln

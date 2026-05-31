@@ -1,0 +1,60 @@
+{
+  "nav": {
+    "home": "Home", "services": "Our Services",
+    "certifications": "Certifications", "partnerships": "Partnerships",
+    "blog": "Blog", "contact": "Contact / Apply"
+  },
+  "hero": {
+    "badge": "International Mobility Agency",
+    "title": "Your gateway to Europe",
+    "subtitle": "Reisetür 237 supports your academic and professional projects to Germany, Malta and Poland.",
+    "cta_primary": "Submit my application",
+    "cta_secondary": "Discover our services",
+    "destinations": "Covered destinations"
+  },
+  "stats": {
+    "candidates": "Candidates supported",
+    "partners": "European partners",
+    "countries": "Destination countries",
+    "success": "Success rate"
+  },
+  "services": {
+    "title": "Our Areas of Expertise",
+    "subtitle": "Comprehensive support from orientation to departure",
+    "visa": { "title": "Visa & Migration Assistance", "desc": "Complete support for your consular and migration procedures to Germany, Malta and Poland." },
+    "orientation": { "title": "Advice & Orientation", "desc": "Profile assessment, identification of suitable programs and building your application file." },
+    "ausbildung": { "title": "Ausbildung Pflege", "desc": "Preparation and support for nursing training programs in Germany." },
+    "language": { "title": "Language Training", "desc": "Certified German courses from A1 to C1, official exam preparation and simulations." }
+  },
+  "destinations": {
+    "title": "Our Destinations", "subtitle": "Three countries, thousands of opportunities",
+    "germany": { "name": "Germany", "desc": "Ausbildung Pflege, university programs, skilled worker visa" },
+    "malta":   { "name": "Malta",   "desc": "English-language programs, higher education, professional opportunities" },
+    "poland":  { "name": "Poland",  "desc": "Academic programs, affordable living costs, European integration" }
+  },
+  "certifications": {
+    "title": "Language Certifications", "subtitle": "Internationally recognized examinations",
+    "desc": "As an approved examination center, we prepare and organize official German language certification exams.",
+    "levels": "Available levels", "cta": "Test my level"
+  },
+  "partnerships": {
+    "title": "Our Partnerships", "subtitle": "Institutional collaborations in Europe",
+    "desc": "Reisetür 237 collaborates with recognized partner institutions in Germany and Europe to ensure the quality of each placement."
+  },
+  "blog": {
+    "title": "Blog & News", "subtitle": "Information, guides and testimonials",
+    "read_more": "Read more", "all_articles": "All articles"
+  },
+  "contact": {
+    "title": "Submit your Application", "subtitle": "An advisor will contact you within 48 hours",
+    "name": "Full name", "email": "Email address", "phone": "Phone (WhatsApp)",
+    "destination": "Target destination", "program": "Program type", "message": "Your message",
+    "submit": "Send my request", "success": "Your request has been sent successfully!",
+    "select_destination": "Choose a destination", "select_program": "Choose a program"
+  },
+  "footer": {
+    "tagline": "Your international mobility, our mission.",
+    "legal": "Legal notice", "privacy": "Privacy policy", "rights": "All rights reserved"
+  },
+  "common": { "learn_more": "Learn more", "back_top": "Back to top", "loading": "Loading..." }
+}

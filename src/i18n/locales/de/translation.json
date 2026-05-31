@@ -1,0 +1,60 @@
+{
+  "nav": {
+    "home": "Startseite", "services": "Unsere Leistungen",
+    "certifications": "Zertifizierungen", "partnerships": "Partnerschaften",
+    "blog": "Blog", "contact": "Kontakt / Bewerbung"
+  },
+  "hero": {
+    "badge": "Internationale Mobilitätsagentur",
+    "title": "Ihr Tor nach Europa",
+    "subtitle": "Reisetür 237 begleitet Sie bei Ihren akademischen und beruflichen Projekten nach Deutschland, Malta und Polen.",
+    "cta_primary": "Bewerbung einreichen",
+    "cta_secondary": "Unsere Leistungen entdecken",
+    "destinations": "Abgedeckte Zielländer"
+  },
+  "stats": {
+    "candidates": "Begleitete Kandidaten",
+    "partners": "Europäische Partner",
+    "countries": "Zielländer",
+    "success": "Erfolgsquote"
+  },
+  "services": {
+    "title": "Unsere Fachgebiete",
+    "subtitle": "Umfassende Begleitung von der Orientierung bis zur Abreise",
+    "visa": { "title": "Visum & Migration", "desc": "Vollständige Begleitung bei konsularischen und Migrationsverfahren nach Deutschland, Malta und Polen." },
+    "orientation": { "title": "Beratung & Orientierung", "desc": "Bewertung Ihres Profils, Identifizierung geeigneter Programme und Aufbau Ihrer Bewerbungsmappe." },
+    "ausbildung": { "title": "Ausbildung Pflege", "desc": "Vorbereitung und Begleitung für Pflegeausbildungsprogramme in Deutschland." },
+    "language": { "title": "Sprachausbildung", "desc": "Zertifizierte Deutschkurse von A1 bis C1, Prüfungsvorbereitung und Simulationen." }
+  },
+  "destinations": {
+    "title": "Unsere Zielländer", "subtitle": "Drei Länder, tausende Möglichkeiten",
+    "germany": { "name": "Deutschland", "desc": "Ausbildung Pflege, Universitätsprogramme, qualifiziertes Arbeitsvisum" },
+    "malta":   { "name": "Malta",       "desc": "Englischsprachige Programme, Hochschulstudium, berufliche Möglichkeiten" },
+    "poland":  { "name": "Polen",       "desc": "Akademische Programme, günstige Lebenshaltungskosten, europäische Integration" }
+  },
+  "certifications": {
+    "title": "Sprachzertifizierungen", "subtitle": "International anerkannte Prüfungen",
+    "desc": "Als zugelassenes Prüfungszentrum bereiten wir Sie auf offizielle Deutschzertifizierungen vor und organisieren die Prüfungen.",
+    "levels": "Verfügbare Niveaus", "cta": "Mein Niveau testen"
+  },
+  "partnerships": {
+    "title": "Unsere Partnerschaften", "subtitle": "Institutionelle Zusammenarbeit in Europa",
+    "desc": "Reisetür 237 arbeitet mit anerkannten Partnerinstitutionen in Deutschland und Europa zusammen, um die Qualität jeder Vermittlung zu gewährleisten."
+  },
+  "blog": {
+    "title": "Blog & Neuigkeiten", "subtitle": "Informationen, Ratgeber und Erfahrungsberichte",
+    "read_more": "Weiterlesen", "all_articles": "Alle Artikel"
+  },
+  "contact": {
+    "title": "Bewerbung einreichen", "subtitle": "Ein Berater meldet sich innerhalb von 48 Stunden",
+    "name": "Vollständiger Name", "email": "E-Mail-Adresse", "phone": "Telefon (WhatsApp)",
+    "destination": "Gewünschtes Zielland", "program": "Programmtyp", "message": "Ihre Nachricht",
+    "submit": "Anfrage senden", "success": "Ihre Anfrage wurde erfolgreich gesendet!",
+    "select_destination": "Zielland wählen", "select_program": "Programm wählen"
+  },
+  "footer": {
+    "tagline": "Ihre internationale Mobilität, unsere Mission.",
+    "legal": "Impressum", "privacy": "Datenschutz", "rights": "Alle Rechte vorbehalten"
+  },
+  "common": { "learn_more": "Mehr erfahren", "back_top": "Nach oben", "loading": "Wird geladen..." }
+}

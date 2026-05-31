@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    color: #1A1A2E;
+    background: #ffffff;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-navy text-white font-body font-semibold px-6 py-3 rounded-lg
+    hover:bg-navy-light transition-all duration-200 shadow-md hover:shadow-lg
+    active:scale-95 inline-flex items-center gap-2;
+  }
+  .btn-outline {
+    @apply border-2 border-navy text-navy font-body font-semibold px-6 py-3 rounded-lg
+    hover:bg-navy hover:text-white transition-all duration-200
+    active:scale-95 inline-flex items-center gap-2;
+  }
+  .btn-gold {
+    @apply bg-red text-white font-body font-semibold px-6 py-3 rounded-lg
+    hover:bg-red-dark transition-all duration-200 shadow-md hover:shadow-lg
+    active:scale-95 inline-flex items-center gap-2;
+  }
+  .section-title {
+    @apply font-display text-3xl md:text-4xl font-bold text-navy leading-tight;
+  }
+  .section-subtitle {
+    @apply font-body text-slate text-lg mt-3;
+  }
+  .card {
+    @apply bg-white rounded-2xl shadow-sm border border-slate-100
+    hover:shadow-md transition-shadow duration-200;
+  }
+  .gold-line {
+    @apply w-12 h-1 bg-gold rounded-full my-4;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #f1f5f9; }
+::-webkit-scrollbar-thumb { background: #1B3E6F; border-radius: 3px; }
+
+/* Animations utilitaires */
+.animate-delay-100 { animation-delay: 100ms; }
+.animate-delay-200 { animation-delay: 200ms; }
+.animate-delay-300 { animation-delay: 300ms; }
+.animate-delay-400 { animation-delay: 400ms; }
+.animate-delay-500 { animation-delay: 500ms; }
+.opacity-0 { opacity: 0; }
