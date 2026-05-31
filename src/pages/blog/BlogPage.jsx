@@ -70,7 +70,7 @@ Avant votre départ, nous vous orientons pour le logement, l'assurance santé in
 Vous souhaitez démarrer votre parcours Ausbildung ? Contactez Reisetür 237 dès aujourd'hui.`,
   },
   {
-    id:'2', slug:'visa-etudiant-allemagne-documents',
+    id:'2', image:'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=700&q=80', slug:'visa-etudiant-allemagne-documents',
     title_fr:"Visa étudiant Allemagne : la liste complète des documents",
     title_de:"Studentenvisum Deutschland: die vollständige Dokumentenliste",
     title_en:"Germany Student Visa: the complete document checklist",
@@ -126,7 +126,7 @@ Pour étudier ou effectuer une Ausbildung en Allemagne, les ressortissants camer
 Reisetür 237 vérifie et constitue votre dossier complet pour maximiser vos chances.`,
   },
   {
-    id:'3', slug:'temoignage-marie-infirmiere-berlin',
+    id:'3', image:'https://images.unsplash.com/photo-1527613426441-4da17471b66d?w=700&q=80', slug:'temoignage-marie-infirmiere-berlin',
     title_fr:"Témoignage : Marie-Noëlle, infirmière à Berlin grâce à Reisetür 237",
     title_de:"Erfahrungsbericht: Marie-Noëlle, Krankenschwester in Berlin",
     title_en:"Testimonial: Marie-Noëlle, nurse in Berlin thanks to Reisetür 237",
@@ -164,7 +164,7 @@ Reisetür 237 vérifie et constitue votre dossier complet pour maximiser vos cha
 *Marie-Noëlle est l'une des candidates dont Reisetür 237 a accompagné le dossier de A à Z, de la première leçon d'allemand jusqu'à son installation à Berlin.*`,
   },
   {
-    id:'4', slug:'temoignages-groupe-formation-allemagne',
+    id:'4', image:'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=700&q=80', slug:'temoignages-groupe-formation-allemagne',
     title_fr:"Ils sont partis ensemble : 3 candidats, une même école à Berlin",
     title_de:"Sie gingen zusammen: 3 Kandidaten, eine Schule in Berlin",
     title_en:"They left together: 3 candidates, one school in Berlin",
@@ -194,7 +194,7 @@ Reisetür 237 vérifie et constitue votre dossier complet pour maximiser vos cha
 *Jean-Paul, Honorine et Leslie font partie de la même promotion Reisetür 237. Leur départ coordonné a été organisé avec leur école partenaire à Berlin.*`,
   },
   {
-    id:'5', slug:'temoignages-formations-differentes',
+    id:'5', image:'https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=700&q=80', slug:'temoignages-formations-differentes',
     title_fr:"Deux parcours différents, deux réussites : Yvan et Valerie",
     title_de:"Zwei verschiedene Wege, zwei Erfolge: Yvan und Valerie",
     title_en:"Two different paths, two successes: Yvan and Valerie",
@@ -226,7 +226,7 @@ Malte c'est petit mais dynamique. Il y a beaucoup d'étudiants internationaux, l
 *Yvan et Valerie illustrent la diversité des destinations et des parcours que Reisetür 237 accompagne, de l'Allemagne à Malte, selon le profil et les ambitions de chaque candidat.*`,
   },
   {
-    id:'6', slug:'malte-etudes-anglophones',
+    id:'6', image:'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=700&q=80', slug:'malte-etudes-anglophones',
     title_fr:"Étudier à Malte : l'option anglophone abordable en Europe",
     title_de:"Studieren auf Malta: die erschwingliche englischsprachige Option",
     title_en:"Study in Malta: the affordable English-language option in Europe",
