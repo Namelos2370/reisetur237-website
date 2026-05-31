@@ -331,14 +331,36 @@ export default function BlogPage() {
             ? <div style={{ textAlign:'center', padding:'64px 0', color:'#94A3B8' }}><BookOpen size={40} style={{ marginBottom:12, opacity:.4 }}/><p>{L.none}</p></div>
             : <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fill,minmax(310px,1fr))', gap:22 }}>
                 {filtered.map((a,i) => {
-                  const cs = CAT_COLORS[a.category] || { bg:'#F1F5FB', c:'#64748B' }
+                  // Vérification de l'image
+                  const hasImage = !!a.image;
+                  // Dégradé par défaut si pas d'image
+                  const fallbackBg = i%3===0 ? `linear-gradient(135deg,${NAVY},#2a0707)` : i%3===1 ? `linear-gradient(135deg,#1B3E6F,#2563A8)` : `linear-gradient(135deg,${NAVY},${RED})`;
+                  
                   return (
                     <Link key={a.id} to={`/blog/${a.slug||a.id}`} style={{ textDecoration:'none' }}>
                       <div style={{ background:'#fff', borderRadius:18, overflow:'hidden', boxShadow:'0 2px 16px rgba(0,0,0,0.07)', border:'1.5px solid #F1F5FB', height:'100%', display:'flex', flexDirection:'column' }}>
-                        <div style={{ background:i%3===0?`linear-gradient(135deg,${NAVY},#2a0707)`:i%3===1?`linear-gradient(135deg,#1B3E6F,#2563A8)`:`linear-gradient(135deg,${NAVY},${RED})`, padding:'26px 22px 18px', minHeight:90 }}>
-                          <div style={{ fontSize:28, marginBottom:6 }}>{ICONS[a.category]||'📰'}</div>
-                          <span style={{ background:'rgba(255,255,255,0.15)', color:'#fff', fontSize:11, fontWeight:700, padding:'3px 10px', borderRadius:999 }}>{a.category}</span>
+                        
+                        {/* Zone d'en-tête de la carte avec l'image ajoutée ici */}
+                        <div style={{ 
+                          background: hasImage ? `url(${a.image}) center/cover no-repeat` : fallbackBg, 
+                          padding:'26px 22px 18px', 
+                          minHeight: 160, // Agrandit l'en-tête pour bien voir l'image
+                          position: 'relative',
+                          display: 'flex',
+                          flexDirection: 'column',
+                          justifyContent: 'space-between'
+                        }}>
+                          {/* Voile sombre pour que le texte reste lisible sur l'image */}
+                          {hasImage && <div style={{ position:'absolute', inset:0, background:'rgba(0,0,0,0.35)' }} />}
+                          
+                          <div style={{ position:'relative', zIndex:1 }}>
+                            <div style={{ fontSize:28, marginBottom:6 }}>{ICONS[a.category]||'📰'}</div>
+                          </div>
+                          <div style={{ position:'relative', zIndex:1 }}>
+                            <span style={{ background:'rgba(255,255,255,0.25)', backdropFilter:'blur(4px)', color:'#fff', fontSize:11, fontWeight:700, padding:'3px 10px', borderRadius:999 }}>{a.category}</span>
+                          </div>
                         </div>
+
                         <div style={{ padding:'18px 20px', flex:1, display:'flex', flexDirection:'column' }}>
                           <h3 style={{ fontFamily:"'Playfair Display',serif", fontSize:15.5, fontWeight:700, color:NAVY, lineHeight:1.4, marginBottom:10, flex:1 }}>{getTitle(a)}</h3>
                           <p style={{ color:'#64748B', fontSize:13, lineHeight:1.65, marginBottom:14 }}>{(getExcerpt(a)||'').slice(0,110)}...</p>
