@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../hooks/useAuth'
-import { supabase } from '../../lib/supabase' import CandidateDetail from './CandidateDetail'
+import { supabase } from '../../lib/supabase'
+import CandidateDetail from './CandidateDetail'
 import {
   Users, FileText, CreditCard, BookOpen, Globe2,
   Newspaper, Handshake, BarChart2, Settings, LogOut,
@@ -127,6 +128,7 @@ export default function AdminDashboard() {
   const navigate = useNavigate()
   
   const [tab, setTab] = useState('dashboard')
+  const [selectedCandidate, setSelectedCandidate] = useState(null)
 
   // Data
   const [candidates, setCandidates] = useState([])
