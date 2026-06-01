@@ -292,11 +292,11 @@ export default function AdminDashboard() {
       {/* MAIN */}
       <main style={{ marginLeft: isMobile?0:232, flex: 1, padding: isMobile?'56px 14px 16px':'24px 28px' }}>
 
-        {/* ── TABLEAU DE BORD ── */}
+        {isMobile&&<div style={{position:'fixed',top:0,left:0,right:0,background:'#1A1A1A',zIndex:60,padding:'11px 14px',display:'flex' ── */}
         {tab === 'dashboard' && (
           <div>
             <h1 style={{ fontFamily: "'Playfair Display',serif", fontSize: 26, color: NAVY, marginBottom: 22 }}>Tableau de bord</h1>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 16, marginBottom: 26 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: isMobile?'repeat(2,1fr)':'repeat(4,1fr)', gap: 16, marginBottom: 26 }}>
               <StatCard label="Candidats"       value={candidates.length}                                                        icon={Users}      color="#3B82F6" bg="#DBEAFE" />
               <StatCard label="Revenus validés"  value={`${payments.filter(p=>p.status==='Validé').reduce((s,p)=>s+Number(p.amount),0).toLocaleString()} XAF`} icon={CreditCard} color="#10B981" bg="#D1FAE5" />
               <StatCard label="Documents reçus"  value={documents.length}                                                         icon={FileText}   color="#F59E0B" bg="#FEF3C7" />
