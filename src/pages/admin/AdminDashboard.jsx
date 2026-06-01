@@ -127,14 +127,6 @@ export default function AdminDashboard() {
   const { user, profile, signOut } = useAuth()
   const navigate = useNavigate()
   const isMobile=useIsMobile()
-  const isMobile=useIsMobile()
-  const isMobile=useIsMobile()
-  const isMobile=useIsMobile()
-  const isMobile=useIsMobile()
-  const isMobile=useIsMobile()
-  const isMobile=useIsMobile()
-  const isMobile=useIsMobile()
-  const isMobile=useIsMobile()
   const [tab, setTab] = useState('dashboard')
 
   // Data
