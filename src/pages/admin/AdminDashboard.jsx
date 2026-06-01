@@ -258,7 +258,7 @@ export default function AdminDashboard() {
     <div style={{ display: 'flex', minHeight: '100vh', fontFamily: "'DM Sans',sans-serif", background: '#F7F8FC' }}>
 
       {/* SIDEBAR */}
-      <aside style={{ width: 232, background: NAVY, display: 'flex', flexDirection: 'column', position: 'fixed', top: 0, left: 0, bottom: 0, zIndex: 50 }}>
+      <aside style={{ width: isMobile?0:232, background: NAVY, display: isMobile?'none':'flex', flexDirection: 'column', position: 'fixed', top: 0, left: 0, bottom: 0, zIndex: 50 }}>
         <div style={{ padding: '20px 18px 16px', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
           <Link to="/" style={{ textDecoration: 'none' }}>
             <div style={{ fontFamily: "'Playfair Display',serif", fontWeight: 800, fontSize: 18, color: '#fff' }}>
