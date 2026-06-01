@@ -288,12 +288,7 @@ export default function AdminDashboard() {
           </button>
         </div>
       </aside>
-
-      {/* MAIN */}
-      <main style={{ marginLeft: isMobile?0:232, flex: 1, padding: isMobile?'56px 14px 16px':'24px 28px' }}>
-
-        {isMobile&&<div style={{position:'fixed',top:0,left:0,right:0,background:'#1A1A1A',zIndex:60,padding:'11px 14px',display:'flex' ── */}
-        {isMobile&&<div style={{position:'fixed',top:0,left:0,right:0,background:'#1A1A1A',zIndex:60,padding:'11px 14px',display:'flex'
+      <main style={{ marginLeft: isMobile?0:232, flex: 1, padding: isMobile?"56px 14px 16px":"24px 28px" }}>
           <div>
             <h1 style={{ fontFamily: "'Playfair Display',serif", fontSize: 26, color: NAVY, marginBottom: 22 }}>Tableau de bord</h1>
             <div style={{ display: 'grid', gridTemplateColumns: isMobile?'repeat(2,1fr)':'repeat(4,1fr)', gap: 16, marginBottom: 26 }}>
