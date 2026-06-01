@@ -1,63 +1,56 @@
-/* ── Performance CSS — Reisetür 237 ── */
+/* ── Performance & Mobile CSS — Reisetür 237 ── */
 
-/* Réduire animations sur connexions lentes ou préférences */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
 }
 
-/* Images lazy loading */
-img {
-  loading: lazy;
-  content-visibility: auto;
-}
-
-/* Optimisation rendu texte */
 body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Contenus hors écran — ne pas rendre */
-.offscreen {
-  content-visibility: auto;
-  contain-intrinsic-size: 0 500px;
-}
-
-/* Scrollbar légère */
-::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: #f1f5f9; }
 ::-webkit-scrollbar-thumb { background: #1B3E6F; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #C0392B; }
 
-/* Skeleton loading */
-.skeleton {
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-  background-size: 200% 100%;
-  animation: shimmer 1.5s infinite;
-  border-radius: 8px;
-}
-@keyframes shimmer {
-  0%   { background-position: -200% 0; }
-  100% { background-position:  200% 0; }
-}
-
-/* Focus visible pour accessibilité */
-:focus-visible {
-  outline: 2px solid #C8A84B;
-  outline-offset: 2px;
-}
-
-/* Transitions globales douces */
+:focus-visible { outline: 2px solid #C8A84B; outline-offset: 2px; }
 a, button { transition: all 0.15s ease; }
 
-/* Mobile — éviter le zoom sur les inputs iOS */
+/* ── MOBILE RESPONSIVE ── */
 @media (max-width: 768px) {
-  input, select, textarea {
-    font-size: 16px !important;
-  }
+
+  /* Fix iOS zoom */
+  input, select, textarea { font-size: 16px !important; }
+
+  /* Grilles → 1 colonne */
+  .services-grid,
+  .blog-grid,
+  .partners-grid,
+  .certif-grid,
+  .contact-grid,
+  .destinations-grid { grid-template-columns: 1fr !important; }
+
+  /* Services page — image+texte empilé */
+  .service-row { grid-template-columns: 1fr !important; }
+  .service-row img { height: 200px !important; }
+
+  /* Certifications — empilé */
+  .certif-card { grid-template-columns: 1fr !important; }
+  .certif-card .certif-img { height: 140px !important; }
+
+  /* Contact — empilé */
+  .contact-grid > div { padding: 24px 16px !important; }
+
+  /* Sidebar dashboard — cachée sur mobile */
+  .dashboard-sidebar { display: none !important; }
+  .dashboard-main { margin-left: 0 !important; }
+
+  /* Padding général */
+  section { padding-left: 16px !important; padding-right: 16px !important; }
+
+  /* Typographie */
+  h1 { font-size: clamp(24px, 8vw, 40px) !important; }
 }
