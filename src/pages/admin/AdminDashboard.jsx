@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { useIsMobile } from '../../hooks/useIsMobile'↵import { useAuth } from '../../hooks/useAuth'
+import { useIsMobile } from '../../hooks/useIsMobile'
+import { useAuth } from '../../hooks/useAuth'
 import { supabase } from '../../lib/supabase'
 import {
   Users, FileText, CreditCard, BookOpen, Globe2,
@@ -125,7 +126,16 @@ const THead = ({ cols }) => (
 export default function AdminDashboard() {
   const { user, profile, signOut } = useAuth()
   const navigate = useNavigate()
-  const isMobile=useIsMobile()↵  const isMobile=useIsMobile()↵  const isMobile=useIsMobile()↵  const isMobile=useIsMobile()↵  const isMobile=useIsMobile()↵  const isMobile=useIsMobile()↵  const isMobile=useIsMobile()↵  const isMobile=useIsMobile()↵  const isMobile=useIsMobile()↵  const [tab, setTab] = useState('dashboard')
+  const isMobile=useIsMobile()
+  const isMobile=useIsMobile()
+  const isMobile=useIsMobile()
+  const isMobile=useIsMobile()
+  const isMobile=useIsMobile()
+  const isMobile=useIsMobile()
+  const isMobile=useIsMobile()
+  const isMobile=useIsMobile()
+  const isMobile=useIsMobile()
+  const [tab, setTab] = useState('dashboard')
 
   // Data
   const [candidates, setCandidates] = useState([])
