@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../hooks/useAuth'
-import { supabase } from '../../lib/supabase'
+import { supabase } from '../../lib/supabase' import CandidateDetail from './CandidateDetail'
 import {
   Users, FileText, CreditCard, BookOpen, Globe2,
   Newspaper, Handshake, BarChart2, Settings, LogOut,
@@ -302,7 +302,8 @@ export default function AdminDashboard() {
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
                   <h3 style={{ fontFamily: "'Playfair Display',serif", fontSize: 17, color: NAVY }}>Derniers candidats</h3>
                   <button onClick={() => setTab('candidates')} style={{ color: RED, fontSize: 12.5, fontWeight: 600, background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 3 }}>Voir tout <ChevronRight size={13} /></button>
-                </div>
+                onClick={() => setSelectedCandidate(c)}
+                 </div>
                 {candidates.slice(0,5).map(c => (
                   <div key={c.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '9px 0', borderBottom: '1px solid #F1F5FB' }}>
                     <div>
