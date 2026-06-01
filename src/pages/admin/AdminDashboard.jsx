@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { useIsMobile } from '../../hooks/useIsMobile'
 import { useAuth } from '../../hooks/useAuth'
 import { supabase } from '../../lib/supabase'
 import {
@@ -126,7 +125,7 @@ const THead = ({ cols }) => (
 export default function AdminDashboard() {
   const { user, profile, signOut } = useAuth()
   const navigate = useNavigate()
-  const isMobile=useIsMobile()
+  
   const [tab, setTab] = useState('dashboard')
 
   // Data
@@ -258,7 +257,7 @@ export default function AdminDashboard() {
     <div style={{ display: 'flex', minHeight: '100vh', fontFamily: "'DM Sans',sans-serif", background: '#F7F8FC' }}>
 
       {/* SIDEBAR */}
-      <aside style={{ width: isMobile?0:232, background: NAVY, display: isMobile?'none':'flex', flexDirection: 'column', position: 'fixed', top: 0, left: 0, bottom: 0, zIndex: 50 }}>
+      <aside style={{ width: 232, background: NAVY, display: 'flex', flexDirection: 'column', position: 'fixed', top: 0, left: 0, bottom: 0, zIndex: 50 }}>
         <div style={{ padding: '20px 18px 16px', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
           <Link to="/" style={{ textDecoration: 'none' }}>
             <div style={{ fontFamily: "'Playfair Display',serif", fontWeight: 800, fontSize: 18, color: '#fff' }}>
@@ -288,10 +287,10 @@ export default function AdminDashboard() {
           </button>
         </div>
       </aside>
-      <main style={{ marginLeft: isMobile?0:232, flex: 1, padding: isMobile?"56px 14px 16px":"24px 28px" }}>
+      <main style={{ marginLeft: 232, flex: 1, padding: '24px 28px' }}>
           <div>
             <h1 style={{ fontFamily: "'Playfair Display',serif", fontSize: 26, color: NAVY, marginBottom: 22 }}>Tableau de bord</h1>
-            <div style={{ display: 'grid', gridTemplateColumns: isMobile?'repeat(2,1fr)':'repeat(4,1fr)', gap: 16, marginBottom: 26 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 16, marginBottom: 26 }}>
               <StatCard label="Candidats"       value={candidates.length}                                                        icon={Users}      color="#3B82F6" bg="#DBEAFE" />
               <StatCard label="Revenus validés"  value={`${payments.filter(p=>p.status==='Validé').reduce((s,p)=>s+Number(p.amount),0).toLocaleString()} XAF`} icon={CreditCard} color="#10B981" bg="#D1FAE5" />
               <StatCard label="Documents reçus"  value={documents.length}                                                         icon={FileText}   color="#F59E0B" bg="#FEF3C7" />

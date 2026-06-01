@@ -19,7 +19,7 @@ export default function PolitiqueConfidentialite() {
           <div style={S.section}>
             <h2 style={S.h2}>1. Responsable du traitement</h2>
             <p style={S.p}>Le responsable du traitement des données personnelles collectées sur ce site est :</p>
-            <p style={S.p}><strong>Reisetür 237</strong> — Gabriel Ezéchiel Junior Fokou<br/>Avenue Germaine, Essos, Yaoundé, Cameroun<br/>Email : reisetur237@gmail.com — Tél : +237 620 107 489</p>
+            <p style={S.p}><strong>Reisetür 237</strong> — Gabriel Ezéchiel Junior Fokou<br/>Avenue Germaine, Essos, Yaoundé, Cameroun<br/>Email : reisetur237@gmail.com — Tél : </p>
           </div>
 
           <div style={S.section}>

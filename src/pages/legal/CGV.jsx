@@ -115,7 +115,7 @@ export default function CGV() {
 
           <div style={S.section}>
             <h2 style={S.h2}>Article 12 — Contact</h2>
-            <p style={S.p}>Pour toute question relative aux présentes CGV :<br/><strong>reisetur237@gmail.com</strong> — <strong>+237 620 107 489</strong></p>
+            <p style={S.p}>Pour toute question relative aux présentes CGV :<br/><strong>reisetur237@gmail.com</strong> — <strong></strong></p>
           </div>
 
           <div style={{ marginTop:40, textAlign:'center' }}>

@@ -20,9 +20,9 @@ export default function MentionsLegales() {
             <h2 style={S.h2}>1. Éditeur du site</h2>
             <p style={S.p}><strong>Dénomination :</strong> Reisetür 237</p>
             <p style={S.p}><strong>Forme juridique :</strong> Entreprise individuelle enregistrée au Cameroun</p>
-            <p style={S.p}><strong>Promoteur :</strong> Gabriel Ezéchiel Junior Fokou</p>
+            <p style={S.p}><strong>Promoteur :</strong> Le Promoteur</p>
             <p style={S.p}><strong>Adresse :</strong> Avenue Germaine, Essos — en face de l'Hôpital de la Caisse (CNPS), Yaoundé, Cameroun</p>
-            <p style={S.p}><strong>Téléphone :</strong> +237 620 107 489</p>
+            <p style={S.p}><strong>Téléphone :</strong></p>
             <p style={S.p}><strong>Email :</strong> reisetur237@gmail.com</p>
           </div>
 
