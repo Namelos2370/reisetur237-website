@@ -155,7 +155,7 @@ export default function AdminDashboard() {
 
   async function fetchAll() {
     const [c, d, p, v, a, pt, ex, t] = await Promise.all([
-      supabase.from('profiles').select('*').or('role.eq.candidate,role.is.null').order('created_at',{ascending:false}),
+      supabase.from('profiles').select('*').order('created_at',{ascending:false}),
       supabase.from('documents').select('*, profiles(full_name)').order('created_at',{ascending:false}),
       supabase.from('payments').select('*, profiles(full_name)').order('created_at',{ascending:false}),
       supabase.from('visa_dossiers').select('*, profiles!visa_dossiers_candidate_id_fkey(full_name,destination)').order('created_at',{ascending:false}),
@@ -247,7 +247,8 @@ export default function AdminDashboard() {
 
   const handleLogout = async () => { await signOut(); navigate('/') }
 
-  const filteredCandidates = candidates.filter(c =>
+  const ADMIN_ROLES = ['admin','super_admin','charged_dossier','accountant','editor']
+  const filteredCandidates = candidates.filter(c => !ADMIN_ROLES.includes(c.role) &&
     (filter === 'Tous' || c.dossier_status === filter) &&
     (c.full_name?.toLowerCase().includes(search.toLowerCase()) || c.email?.toLowerCase().includes(search.toLowerCase()))
   )
