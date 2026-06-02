@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../hooks/useAuth'
-import { supabase } from '../../lib/supabase'
-import CandidateDetail from './CandidateDetail'
+import { supabase } from '../../lib/supabase' import CandidateDetail from './CandidateDetail'
 import {
   Users, FileText, CreditCard, BookOpen, Globe2,
   Newspaper, Handshake, BarChart2, Settings, LogOut,
@@ -128,7 +127,6 @@ export default function AdminDashboard() {
   const navigate = useNavigate()
   
   const [tab, setTab] = useState('dashboard')
-  const [selectedCandidate, setSelectedCandidate] = useState(null)
 
   // Data
   const [candidates, setCandidates] = useState([])
@@ -155,7 +153,7 @@ export default function AdminDashboard() {
 
   async function fetchAll() {
     const [c, d, p, v, a, pt, ex, t] = await Promise.all([
-      supabase.from('profiles').select('*').order('created_at',{ascending:false}),
+      supabase.from('profiles').select('*').eq('role','candidate').order('created_at',{ascending:false}),
       supabase.from('documents').select('*, profiles(full_name)').order('created_at',{ascending:false}),
       supabase.from('payments').select('*, profiles(full_name)').order('created_at',{ascending:false}),
       supabase.from('visa_dossiers').select('*, profiles!visa_dossiers_candidate_id_fkey(full_name,destination)').order('created_at',{ascending:false}),
@@ -247,8 +245,7 @@ export default function AdminDashboard() {
 
   const handleLogout = async () => { await signOut(); navigate('/') }
 
-  const ADMIN_ROLES = ['admin','super_admin','charged_dossier','accountant','editor','super_admin']
-  const filteredCandidates = candidates.filter(c => !ADMIN_ROLES.includes(c.role) && c.email !== 'gabrielfokou26@gmail.com' &&
+  const filteredCandidates = candidates.filter(c =>
     (filter === 'Tous' || c.dossier_status === filter) &&
     (c.full_name?.toLowerCase().includes(search.toLowerCase()) || c.email?.toLowerCase().includes(search.toLowerCase()))
   )
@@ -338,7 +335,7 @@ export default function AdminDashboard() {
         )}
 
         {/* ── CANDIDATS ── */}
-        {tab === "candidates" && selectedCandidate ? <CandidateDetail candidate={selectedCandidate} onBack={()=>setSelectedCandidate(null)}/> : tab === "candidates" && (
+        {tab === 'candidates' && (
           <div>
             <h1 style={{ fontFamily: "'Playfair Display',serif", fontSize: 26, color: NAVY, marginBottom: 18 }}>Gestion des Candidats</h1>
             <div style={{ display: 'flex', gap: 10, marginBottom: 18, flexWrap: 'wrap' }}>
@@ -362,10 +359,9 @@ export default function AdminDashboard() {
                       <td style={{ padding:'11px 14px', fontSize:12.5 }}>{c.destination}</td>
                       <td style={{ padding:'11px 14px' }}><Tag status={c.dossier_status} /></td>
                       <td style={{ padding:'11px 14px' }}>
-                          <button onClick={()=>setSelectedCandidate(c)} style={{background:"#1B3E6F",color:"#fff",border:"none",borderRadius:7,padding:"5px 10px",fontSize:12,fontWeight:700,cursor:"pointer",marginRight:6}}>Voir</button>
-                          <select onChange={e=>updateCandidateStatus(c.id,e.target.value)} value={c.dossier_status} style={{fontSize:12,border:"1px solid #E2E8F0",borderRadius:7,padding:"4px 8px",cursor:"pointer",background:"#fff"}}>
-                            {["En attente","En cours","Validé","Rejeté"].map(s=><option key={s}>{s}</option>)}
-                          </select>
+                        <select onChange={e => updateCandidateStatus(c.id,e.target.value)} value={c.dossier_status} style={{ fontSize:12, border:'1px solid #E2E8F0', borderRadius:7, padding:'4px 8px', cursor:'pointer', background:'#fff' }}>
+                          {['En attente','En cours','Validé','Rejeté'].map(s => <option key={s}>{s}</option>)}
+                        </select>
                       </td>
                     </tr>
                   ))}
