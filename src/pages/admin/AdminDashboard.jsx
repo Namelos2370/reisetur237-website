@@ -361,9 +361,10 @@ export default function AdminDashboard() {
                       <td style={{ padding:'11px 14px', fontSize:12.5 }}>{c.destination}</td>
                       <td style={{ padding:'11px 14px' }}><Tag status={c.dossier_status} /></td>
                       <td style={{ padding:'11px 14px' }}>
-                        <button onClick={()=>setSelectedCandidate(c)} style={{background:'#1B3E6F',color:'#fff',border:'none',borderRadius:7,padding:'5 updateCandidateStatus(c.id,e.target.value)} value={c.dossier_status} style={{ fontSize:12, border:'1px solid #E2E8F0', borderRadius:7, padding:'4px 8px', cursor:'pointer', background:'#fff' }}>
-                          {['En attente','En cours','Validé','Rejeté'].map(s => <option key={s}>{s}</option>)}
-                        </select>
+                          <button onClick={()=>setSelectedCandidate(c)} style={{background:"#1B3E6F",color:"#fff",border:"none",borderRadius:7,padding:"5px 10px",fontSize:12,fontWeight:700,cursor:"pointer",marginRight:6}}>Voir</button>
+                          <select onChange={e=>updateCandidateStatus(c.id,e.target.value)} value={c.dossier_status} style={{fontSize:12,border:"1px solid #E2E8F0",borderRadius:7,padding:"4px 8px",cursor:"pointer",background:"#fff"}}>
+                            {["En attente","En cours","Validé","Rejeté"].map(s=><option key={s}>{s}</option>)}
+                          </select>
                       </td>
                     </tr>
                   ))}
