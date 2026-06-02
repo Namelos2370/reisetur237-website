@@ -337,7 +337,7 @@ export default function AdminDashboard() {
         )}
 
         {/* ── CANDIDATS ── */}
-        {tab === 'candidates' && selectedCandidate ? <CandidateDetail candidate={selectedCandidate} onBack={()=>{setSelectedCandidate(n (
+        {tab === "candidates" && selectedCandidate ? <CandidateDetail candidate={selectedCandidate} onBack={()=>setSelectedCandidate(null)}/> : tab === "candidates" && (
           <div>
             <h1 style={{ fontFamily: "'Playfair Display',serif", fontSize: 26, color: NAVY, marginBottom: 18 }}>Gestion des Candidats</h1>
             <div style={{ display: 'flex', gap: 10, marginBottom: 18, flexWrap: 'wrap' }}>
