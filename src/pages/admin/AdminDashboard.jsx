@@ -361,9 +361,11 @@ export default function AdminDashboard() {
                       <td style={{ padding:'11px 14px', fontSize:12.5 }}>{c.destination}</td>
                       <td style={{ padding:'11px 14px' }}><Tag status={c.dossier_status} /></td>
                       <td style={{ padding:'11px 14px' }}>
-                        <button onClick={async()=>{if(window.confirm('Supprimer ?')){await supabase.from('profiles').delete().eq('id',c.id);fetchAll()} value={c.dossier_status} style={{ fontSize:12, border:'1px solid #E2E8F0', borderRadius:7, padding:'4px 8px', cursor:'pointer', background:'#fff' }}>
-                          {['En attente','En cours','Validé','Rejeté'].map(s => <option key={s}>{s}</option>)}
-                        </select>
+                          <button onClick={async()=>{if(window.confirm("Supprimer ?")){await supabase.from("profiles").delete().eq("id",c.id);fetchAll()}}} style={{background:"#EF4444",color:"#fff",border:"none",borderRadius:7,padding:"5px 8px",fontSize:11,fontWeight:700,cursor:"pointer",marginRight:4}}>Suppr</button>
+                          <button onClick={()=>setSelectedCandidate(c)} style={{background:"#1B3E6F",color:"#fff",border:"none",borderRadius:7,padding:"5px 8px",fontSize:11,fontWeight:700,cursor:"pointer",marginRight:4}}>Voir</button>
+                          <select onChange={e=>updateCandidateStatus(c.id,e.target.value)} value={c.dossier_status} style={{fontSize:12,border:"1px solid #E2E8F0",borderRadius:7,padding:"4px 8px",cursor:"pointer",background:"#fff"}}>
+                            {["En attente","En cours","Validé","Rejeté"].map(s=><option key={s}>{s}</option>)}
+                          </select>
                       </td>
                     </tr>
                   ))}
