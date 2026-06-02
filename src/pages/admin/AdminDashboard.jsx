@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../hooks/useAuth'
-import { supabase } from '../../lib/supabase' import CandidateDetail from './CandidateDetail'
+import { supabase } from '../../lib/supabase'
+import CandidateDetail from './CandidateDetail'
 import {
   Users, FileText, CreditCard, BookOpen, Globe2,
   Newspaper, Handshake, BarChart2, Settings, LogOut,
@@ -130,6 +131,7 @@ export default function AdminDashboard() {
 
   // Data
   const [candidates, setCandidates] = useState([])
+  const [selectedCandidate, setSelectedCandidate] = useState(null)
   const [documents,  setDocuments]  = useState([])
   const [payments,   setPayments]   = useState([])
   const [visas,      setVisas]      = useState([])
@@ -335,7 +337,7 @@ export default function AdminDashboard() {
         )}
 
         {/* ── CANDIDATS ── */}
-        {tab === 'candidates' && (
+        {tab === 'candidates' && selectedCandidate ? <CandidateDetail candidate={selectedCandidate} onBack={()=>setSelectedCandidate(nu (
           <div>
             <h1 style={{ fontFamily: "'Playfair Display',serif", fontSize: 26, color: NAVY, marginBottom: 18 }}>Gestion des Candidats</h1>
             <div style={{ display: 'flex', gap: 10, marginBottom: 18, flexWrap: 'wrap' }}>
@@ -359,7 +361,7 @@ export default function AdminDashboard() {
                       <td style={{ padding:'11px 14px', fontSize:12.5 }}>{c.destination}</td>
                       <td style={{ padding:'11px 14px' }}><Tag status={c.dossier_status} /></td>
                       <td style={{ padding:'11px 14px' }}>
-                        <select onChange={e => updateCandidateStatus(c.id,e.target.value)} value={c.dossier_status} style={{ fontSize:12, border:'1px solid #E2E8F0', borderRadius:7, padding:'4px 8px', cursor:'pointer', background:'#fff' }}>
+                        <button onClick={async()=>{if(window.confirm('Supprimer ?')){await supabase.from('profiles').delete().eq('id',c.id);fetchAll()} value={c.dossier_status} style={{ fontSize:12, border:'1px solid #E2E8F0', borderRadius:7, padding:'4px 8px', cursor:'pointer', background:'#fff' }}>
                           {['En attente','En cours','Validé','Rejeté'].map(s => <option key={s}>{s}</option>)}
                         </select>
                       </td>
