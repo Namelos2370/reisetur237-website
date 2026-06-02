@@ -247,8 +247,8 @@ export default function AdminDashboard() {
 
   const handleLogout = async () => { await signOut(); navigate('/') }
 
-  const ADMIN_ROLES = ['admin','super_admin','charged_dossier','accountant','editor']
-  const filteredCandidates = candidates.filter(c => !ADMIN_ROLES.includes(c.role) &&
+  const ADMIN_ROLES = ['admin','super_admin','charged_dossier','accountant','editor','super_admin']
+  const filteredCandidates = candidates.filter(c => !ADMIN_ROLES.includes(c.role) && c.email !== 'gabrielfokou26@gmail.com' &&
     (filter === 'Tous' || c.dossier_status === filter) &&
     (c.full_name?.toLowerCase().includes(search.toLowerCase()) || c.email?.toLowerCase().includes(search.toLowerCase()))
   )
