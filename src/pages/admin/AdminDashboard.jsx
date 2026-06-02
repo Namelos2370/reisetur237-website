@@ -155,7 +155,7 @@ export default function AdminDashboard() {
 
   async function fetchAll() {
     const [c, d, p, v, a, pt, ex, t] = await Promise.all([
-      supabase.from('profiles').select('*').eq('role','candidate').order('created_at',{ascending:false}),
+      supabase.from('profiles').select('*').not('role','in','("admin","super_admin","charged_dossier","accountant","editor")').order('created_at',{ascending:false}),
       supabase.from('documents').select('*, profiles(full_name)').order('created_at',{ascending:false}),
       supabase.from('payments').select('*, profiles(full_name)').order('created_at',{ascending:false}),
       supabase.from('visa_dossiers').select('*, profiles!visa_dossiers_candidate_id_fkey(full_name,destination)').order('created_at',{ascending:false}),
