@@ -711,18 +711,18 @@ Réponds UNIQUEMENT en JSON valide :
 
       {modal === 'article' && editing && (
         <Modal title={editing.id ? "Modifier l'article" : 'Nouvel article'} onClose={() => { setModal(null); setEditing(null) }}>
-          {/* Section IA */}
-          <div style={{ background:'linear-gradient(135deg,#1A1A1A,#1B3E6F)', borderRadius:12, padding:'16px 18px', marginBottom:18 }}>
-            <p style={{ color:'#C8A84B', fontSize:11, fontWeight:700, textTransform:'uppercase', letterSpacing:'.12em', marginBottom:8 }}>Générer avec IA</p>
-            <p style={{ color:'rgba(255,255,255,0.6)', fontSize:12, marginBottom:10 }}>Décrivez le sujet — Claude rédige l'article complet en français</p>
+          {/* Section IA - VERSION 3 */}
+          <div style={{ background:'#C0392B', borderRadius:12, padding:'16px 18px', marginBottom:18, border:'3px solid #fff' }}>
+            <p style={{ color:'#fff', fontSize:14, fontWeight:800, marginBottom:8 }}>GENERER AVEC L'IA</p>
+            <p style={{ color:'rgba(255,255,255,0.85)', fontSize:12, marginBottom:10 }}>Decrivez le sujet et Claude redige l'article complet</p>
             <div style={{ display:'flex', gap:8 }}>
               <input value={aiPrompt} onChange={e=>setAiPrompt(e.target.value)}
-                placeholder="ex: Comment obtenir un visa étudiant pour l'Allemagne depuis le Cameroun"
+                placeholder="ex: Visa etudiant Allemagne depuis le Cameroun"
                 onKeyDown={e=>e.key==='Enter'&&generateArticleAI()}
-                style={{ flex:1, border:'1px solid rgba(255,255,255,0.2)', borderRadius:8, padding:'9px 12px', fontSize:13, background:'rgba(255,255,255,0.08)', color:'#fff', outline:'none', fontFamily:'inherit' }}/>
+                style={{ flex:1, border:'2px solid #fff', borderRadius:8, padding:'9px 12px', fontSize:13, background:'#fff', color:'#1A1A1A', outline:'none', fontFamily:'inherit' }}/>
               <button onClick={generateArticleAI} disabled={aiLoading}
-                style={{ background:'#C8A84B', color:'#1A1A1A', border:'none', borderRadius:8, padding:'9px 16px', fontSize:13, fontWeight:700, cursor:'pointer', whiteSpace:'nowrap' }}>
-                {aiLoading ? 'Génération...' : 'Générer'}
+                style={{ background:'#fff', color:'#C0392B', border:'none', borderRadius:8, padding:'9px 16px', fontSize:13, fontWeight:800, cursor:'pointer', whiteSpace:'nowrap' }}>
+                {aiLoading ? 'Generation...' : 'GENERER'}
               </button>
             </div>
           </div>
@@ -845,4 +845,3 @@ Réponds UNIQUEMENT en JSON valide :
     </div>
   )
 }
-// cache bust Wed Jun  3 16:21:02     2026
