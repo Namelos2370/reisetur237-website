@@ -354,8 +354,7 @@ export default function BlogPage() {
                           <span style={{ position:'absolute', top:12, left:12, background:'rgba(255,255,255,0.15)', color:'#fff', fontSize:11, fontWeight:700, padding:'4px 10px', borderRadius:999 }}>{a.category}</span>
                           <span style={{ position:'absolute', bottom:12, left:12, fontSize:22 }}>{ICONS[a.category]||'📰'}</span>
                         </div>
-                        </div>
-                        <div style={{ padding:'18px 20px', flex:1, display:'flex', flexDirection:'column' }}>
+                        <div style={{ padding:"18px 20px", flex:1, display:"flex", flexDirection:"column" }}>
                           <h3 style={{ fontFamily:"'Playfair Display',serif", fontSize:15.5, fontWeight:700, color:NAVY, lineHeight:1.4, marginBottom:10, flex:1 }}>{getTitle(a)}</h3>
                           <p style={{ color:'#64748B', fontSize:13, lineHeight:1.65, marginBottom:14 }}>{(getExcerpt(a)||'').slice(0,110)}...</p>
                           <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', borderTop:'1px solid #F1F5FB', paddingTop:10 }}>
