@@ -713,7 +713,7 @@ Réponds UNIQUEMENT en JSON valide :
         <Modal title={editing.id ? "Modifier l'article" : 'Nouvel article'} onClose={() => { setModal(null); setEditing(null) }}>
           {/* Section IA */}
           <div style={{ background:'linear-gradient(135deg,#1A1A1A,#1B3E6F)', borderRadius:12, padding:'16px 18px', marginBottom:18 }}>
-            <p style={{ color:'#C8A84B', fontSize:11, fontWeight:700, textTransform:'uppercase', letterSpacing:'.12em', marginBottom:8 }}>✨ Générer avec l'IA</p>
+            <p style={{ color:'#C8A84B', fontSize:11, fontWeight:700, textTransform:'uppercase', letterSpacing:'.12em', marginBottom:8 }}>Générer avec IA</p>
             <p style={{ color:'rgba(255,255,255,0.6)', fontSize:12, marginBottom:10 }}>Décrivez le sujet — Claude rédige l'article complet en français</p>
             <div style={{ display:'flex', gap:8 }}>
               <input value={aiPrompt} onChange={e=>setAiPrompt(e.target.value)}
@@ -722,7 +722,7 @@ Réponds UNIQUEMENT en JSON valide :
                 style={{ flex:1, border:'1px solid rgba(255,255,255,0.2)', borderRadius:8, padding:'9px 12px', fontSize:13, background:'rgba(255,255,255,0.08)', color:'#fff', outline:'none', fontFamily:'inherit' }}/>
               <button onClick={generateArticleAI} disabled={aiLoading}
                 style={{ background:'#C8A84B', color:'#1A1A1A', border:'none', borderRadius:8, padding:'9px 16px', fontSize:13, fontWeight:700, cursor:'pointer', whiteSpace:'nowrap' }}>
-                {aiLoading ? '⏳ Génération...' : '✨ Générer'}
+                {aiLoading ? 'Génération...' : 'Générer'}
               </button>
             </div>
           </div>
@@ -767,7 +767,7 @@ Réponds UNIQUEMENT en JSON valide :
             <Textarea label="Description publique (sans nommer l'institution)" value={editing.description||''} onChange={v => setEditing(p=>({...p,description:v}))} rows={4} placeholder="Description professionnelle visible sur le site..." />
             <button onClick={generatePartnerAI} disabled={aiLoading}
               style={{ position:'absolute', top:4, right:0, background:'linear-gradient(135deg,#1A1A1A,#1B3E6F)', color:'#C8A84B', border:'none', borderRadius:7, padding:'5px 12px', fontSize:11, fontWeight:700, cursor:'pointer' }}>
-              {aiLoading ? '⏳...' : '✨ Générer avec l'IA'}
+              {aiLoading ? 'Génération...' : 'Générer avec IA'}
             </button>
           </div>
           <div style={{ display:'flex', gap:10, justifyContent:'flex-end' }}>
