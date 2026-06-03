@@ -202,9 +202,14 @@ Réponds UNIQUEMENT en JSON valide sans texte avant ou après :
         })
       })
       const data = await response.json()
+      if (data.error) throw new Error('Clé API manquante ou invalide. Ajoutez ANTHROPIC_API_KEY dans Vercel → Settings → Environment Variables.')
       const text = data.content?.[0]?.text || ''
-      const clean = text.replace(/\`\`\`json|\`\`\`/g, '').trim()
-      const parsed = JSON.parse(clean)
+      if (!text) throw new Error('Réponse vide de Claude. Vérifiez la clé API.')
+      const clean = text.replace(/```json|```/g, '').trim()
+      const jsonStart = clean.indexOf('{')
+      const jsonEnd = clean.lastIndexOf('}')
+      if (jsonStart === -1) throw new Error('Format de réponse invalide.')
+      const parsed = JSON.parse(clean.slice(jsonStart, jsonEnd + 1))
       setEditing(prev => ({ ...prev, ...parsed }))
       setAiPrompt('')
     } catch(e) {
