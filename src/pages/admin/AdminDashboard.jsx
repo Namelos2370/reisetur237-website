@@ -767,7 +767,7 @@ Réponds UNIQUEMENT en JSON valide :
             <Textarea label="Description publique (sans nommer l'institution)" value={editing.description||''} onChange={v => setEditing(p=>({...p,description:v}))} rows={4} placeholder="Description professionnelle visible sur le site..." />
             <button onClick={generatePartnerAI} disabled={aiLoading}
               style={{ position:'absolute', top:4, right:0, background:'linear-gradient(135deg,#1A1A1A,#1B3E6F)', color:'#C8A84B', border:'none', borderRadius:7, padding:'5px 12px', fontSize:11, fontWeight:700, cursor:'pointer' }}>
-              {aiLoading ? '⏳...' : '✨ Générer avec l'IA'}
+                {aiLoading ? '⏳...' : "✨ Générer avec l'IA"}
             </button>
           </div>
           <div style={{ display:'flex', gap:10, justifyContent:'flex-end' }}>
