@@ -60,7 +60,7 @@ export default function CGV() {
             <h2 style={S.h2}>Article 5 — Modalités de paiement</h2>
             <p style={S.p}>Le paiement s'effectue par :</p>
             <ul style={{ paddingLeft:22, marginBottom:10 }}>
-              {['Mobile Money (MTN Mobile Money ou Orange Money)','Virement bancaire','Espèces (remise en main propre à l\'agence)'].map(item => (
+              {['Paiement sur place à l\'agence (espèces)','Virement bancaire (RIB disponible à la demande)'].map(item => (
                 <li key={item} style={{ color:'#374151', fontSize:15, lineHeight:1.8, marginBottom:6 }}>{item}</li>
               ))}
             </ul>
@@ -115,7 +115,7 @@ export default function CGV() {
 
           <div style={S.section}>
             <h2 style={S.h2}>Article 12 — Contact</h2>
-            <p style={S.p}>Pour toute question relative aux présentes CGV :<br/><strong>reisetur237@gmail.com</strong> — <strong></strong></p>
+            <p style={S.p}>Pour toute question relative aux présentes CGV :<br/><strong>reisetur237@gmail.com</strong> — <strong>+237 620 107 489</strong></p>
           </div>
 
           <div style={{ marginTop:40, textAlign:'center' }}>

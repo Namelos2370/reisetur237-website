@@ -410,7 +410,10 @@ export default function AdminDashboard() {
         {/* ── PAIEMENTS ── */}
         {tab === 'payments' && (
           <div>
-            <h1 style={{ fontFamily: "'Playfair Display',serif", fontSize: 26, color: NAVY, marginBottom: 18 }}>Gestion des Paiements</h1>
+            <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:18 }}>
+              <h1 style={{ fontFamily: "'Playfair Display',serif", fontSize: 26, color: NAVY }}>Gestion des Paiements</h1>
+              <Btn onClick={() => { setEditing({ status:'En attente', mode:'Paiement sur place à l\'agence' }); setModal('payment') }}><Plus size={14} /> Enregistrer un paiement</Btn>
+            </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 14, marginBottom: 22 }}>
               <StatCard label="Total validé"  value={`${payments.filter(p=>p.status==='Validé').reduce((s,p)=>s+Number(p.amount),0).toLocaleString()} XAF`} icon={CheckCircle} color="#10B981" bg="#D1FAE5" />
               <StatCard label="En attente"    value={payments.filter(p=>p.status==='En attente').length} icon={Clock}        color="#F59E0B" bg="#FEF3C7" />
@@ -425,7 +428,7 @@ export default function AdminDashboard() {
                       <td style={{ padding:'11px 14px', fontSize:13, fontWeight:600, color:NAVY }}>{p.profiles?.full_name}</td>
                       <td style={{ padding:'11px 14px', fontSize:12.5, color:'#64748B' }}>{p.service}</td>
                       <td style={{ padding:'11px 14px', fontSize:13, fontWeight:700, color:NAVY }}>{Number(p.amount).toLocaleString()} XAF</td>
-                      <td style={{ padding:'11px 14px', fontSize:12.5 }}>{p.operator}</td>
+                      <td style={{ padding:'11px 14px', fontSize:12.5 }}>{p.mode || p.operator || '—'}</td>
                       <td style={{ padding:'11px 14px' }}><Tag status={p.status} /></td>
                       <td style={{ padding:'11px 14px' }}>
                         {p.status==='En attente' && <Btn small onClick={() => confirmPayment(p.id)} color="#10B981">Confirmer</Btn>}
@@ -604,6 +607,31 @@ export default function AdminDashboard() {
       </main>
 
       {/* MODALS */}
+      {modal === 'payment' && editing && (
+        <Modal title="Enregistrer un paiement" onClose={() => { setModal(null); setEditing(null) }}>
+          <Select label="Candidat" value={editing.candidate_id||''} onChange={v => setEditing(p=>({...p,candidate_id:v}))}
+            options={[{value:'',label:'— Choisir un candidat —'},...candidates.filter(c=>!ADMIN_ROLES.includes(c.role)).map(c => ({value:c.id,label:c.full_name}))]} />
+          <Input label="Montant (XAF) *" value={editing.amount||''} onChange={v => setEditing(p=>({...p,amount:v}))} type="number" required />
+          <Input label="Service concerné" value={editing.service||''} onChange={v => setEditing(p=>({...p,service:v}))} placeholder="ex: Formation B2, Dossier visa..." />
+          <Select label="Moyen de paiement" value={editing.mode||'Paiement sur place à l\'agence'} onChange={v => setEditing(p=>({...p,mode:v}))}
+            options={[
+              {value:"Paiement sur place à l'agence", label:"Paiement sur place à l'agence"},
+              {value:"Virement bancaire (RIB disponible à la demande)", label:"Virement bancaire (RIB à la demande)"},
+            ]} />
+          <Select label="Statut" value={editing.status||'En attente'} onChange={v => setEditing(p=>({...p,status:v}))}
+            options={[{value:'En attente',label:'En attente'},{value:'Validé',label:'Validé'},{value:'Échoué',label:'Échoué'}]} />
+          <Textarea label="Notes" value={editing.notes||''} onChange={v => setEditing(p=>({...p,notes:v}))} rows={2} />
+          <div style={{ display:'flex', gap:10, justifyContent:'flex-end' }}>
+            <Btn outline onClick={() => { setModal(null); setEditing(null) }} color="#64748B">Annuler</Btn>
+            <Btn onClick={async () => {
+              setSaving(true)
+              await supabase.from('payments').insert({ candidate_id: editing.candidate_id, amount: editing.amount, service: editing.service, mode: editing.mode, status: editing.status, notes: editing.notes, created_by: user.id })
+              setSaving(false); setModal(null); setEditing(null); fetchAll()
+            }} color={RED}><Save size={14} /> {saving?'Enregistrement...':'Enregistrer'}</Btn>
+          </div>
+        </Modal>
+      )}
+
       {modal === 'article' && editing && (
         <Modal title={editing.id ? "Modifier l'article" : 'Nouvel article'} onClose={() => { setModal(null); setEditing(null) }}>
           <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:12 }}>
