@@ -3,11 +3,12 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../hooks/useAuth'
 import { supabase } from '../../lib/supabase'
 import CandidateDetail from './CandidateDetail'
+import AdminMessaging from './AdminMessaging'
 import {
   Users, FileText, CreditCard, BookOpen, Globe2,
   Newspaper, Handshake, BarChart2, Settings, LogOut,
   ChevronRight, Search, CheckCircle, XCircle, Clock,
-  Plus, Trash2, Edit2, Save, X, Eye, EyeOff
+  Plus, Trash2, Edit2, Save, X, Eye, EyeOff, MessageSquare
 } from 'lucide-react'
 
 const NAVY = '#1A1A1A'
@@ -23,9 +24,12 @@ const STATUS_COLOR = {
   'Échoué':     { c: '#EF4444', bg: '#FEE2E2' },
 }
 
+const ADMIN_ROLES = ['admin','super_admin','charged_dossier','accountant','editor']
+
 const MODULES = [
   { id: 'dashboard',  label: 'Tableau de bord',     icon: BarChart2 },
   { id: 'candidates', label: 'Candidats',            icon: Users },
+  { id: 'messagerie', label: 'Messagerie',           icon: MessageSquare },
   { id: 'documents',  label: 'Documents',            icon: FileText },
   { id: 'payments',   label: 'Paiements',            icon: CreditCard },
   { id: 'visa',       label: 'Dossiers Visa',        icon: Globe2 },
@@ -46,7 +50,6 @@ const ROLE_LABELS = {
 const VISA_STEPS = ['depot','etude','rdv','decision','depart']
 const VISA_STEP_LABELS = { depot:'Dépôt', etude:'Étude', rdv:'RDV consulaire', decision:'Décision', depart:'Départ' }
 
-// ── Composants réutilisables ──────────────────────────────────────────────────
 const Tag = ({ status }) => {
   const cfg = STATUS_COLOR[status] || { c: '#64748B', bg: '#F1F5FB' }
   return <span style={{ fontSize: 11, fontWeight: 700, color: cfg.c, background: cfg.bg, padding: '3px 9px', borderRadius: 999 }}>{status}</span>
@@ -98,7 +101,6 @@ const Btn = ({ onClick, color=RED, children, outline=false, small=false }) => (
     borderRadius: 9, padding: small ? '6px 12px' : '10px 18px',
     fontSize: small ? 12 : 13.5, fontWeight: 700, cursor: 'pointer',
     display: 'inline-flex', alignItems: 'center', gap: 6,
-    transition: 'all .15s',
   }}>{children}</button>
 )
 
@@ -122,14 +124,10 @@ const THead = ({ cols }) => (
   </thead>
 )
 
-// ── MAIN ─────────────────────────────────────────────────────────────────────
 export default function AdminDashboard() {
   const { user, profile, signOut } = useAuth()
   const navigate = useNavigate()
-  
   const [tab, setTab] = useState('dashboard')
-
-  // Data
   const [candidates, setCandidates] = useState([])
   const [selectedCandidate, setSelectedCandidate] = useState(null)
   const [documents,  setDocuments]  = useState([])
@@ -139,12 +137,10 @@ export default function AdminDashboard() {
   const [partners,   setPartners]   = useState([])
   const [exams,      setExams]      = useState([])
   const [team,       setTeam]       = useState([])
-
-  // UI
   const [search,  setSearch]  = useState('')
   const [filter,  setFilter]  = useState('Tous')
-  const [modal,   setModal]   = useState(null) // null | 'article' | 'visa' | 'partner' | 'exam' | 'team'
-  const [editing, setEditing] = useState(null) // objet en cours d'édition
+  const [modal,   setModal]   = useState(null)
+  const [editing, setEditing] = useState(null)
   const [saving,  setSaving]  = useState(false)
   const [showPwd, setShowPwd] = useState(false)
 
@@ -155,14 +151,14 @@ export default function AdminDashboard() {
 
   async function fetchAll() {
     const [c, d, p, v, a, pt, ex, t] = await Promise.all([
-      supabase.from('profiles').select('*').eq('role','candidate').order('created_at',{ascending:false}),
+      supabase.from('profiles').select('*').order('created_at',{ascending:false}),
       supabase.from('documents').select('*, profiles(full_name)').order('created_at',{ascending:false}),
       supabase.from('payments').select('*, profiles(full_name)').order('created_at',{ascending:false}),
       supabase.from('visa_dossiers').select('*, profiles!visa_dossiers_candidate_id_fkey(full_name,destination)').order('created_at',{ascending:false}),
       supabase.from('articles').select('*').order('created_at',{ascending:false}),
       supabase.from('partners').select('*').order('created_at',{ascending:false}),
       supabase.from('exam_sessions').select('*').order('date',{ascending:true}),
-      supabase.from('profiles').select('*').neq('role','candidate'),
+      supabase.from('profiles').select('*').in('role',['admin','super_admin','charged_dossier','accountant','editor']),
     ])
     setCandidates(c.data || [])
     setDocuments(d.data  || [])
@@ -174,7 +170,6 @@ export default function AdminDashboard() {
     setTeam(t.data       || [])
   }
 
-  // ── Actions CRUD ────────────────────────────────────────────────────────────
   const updateCandidateStatus = async (id, status) => { await supabase.from('profiles').update({ dossier_status: status }).eq('id', id); fetchAll() }
   const updateDocStatus       = async (id, status) => { await supabase.from('documents').update({ status }).eq('id', id); fetchAll() }
   const confirmPayment        = async (id) => { await supabase.from('payments').update({ status: 'Validé', confirmed_by: user.id }).eq('id', id); fetchAll() }
@@ -184,7 +179,6 @@ export default function AdminDashboard() {
   const togglePartner         = async (id, active) => { await supabase.from('partners').update({ active: !active }).eq('id', id); fetchAll() }
   const deleteItem            = async (table, id) => { if (!window.confirm('Confirmer la suppression ?')) return; await supabase.from(table).delete().eq('id', id); fetchAll() }
 
-  // ── Sauvegarde article ──────────────────────────────────────────────────────
   async function saveArticle() {
     setSaving(true)
     const data = {
@@ -200,7 +194,6 @@ export default function AdminDashboard() {
     setSaving(false); setModal(null); setEditing(null); fetchAll()
   }
 
-  // ── Sauvegarde partenaire ───────────────────────────────────────────────────
   async function savePartner() {
     setSaving(true)
     const data = { name: editing.name, country: editing.country, type: editing.type, contact_email: editing.contact_email, description: editing.description, is_active: editing.is_active ?? true }
@@ -209,7 +202,6 @@ export default function AdminDashboard() {
     setSaving(false); setModal(null); setEditing(null); fetchAll()
   }
 
-  // ── Sauvegarde session examen ───────────────────────────────────────────────
   async function saveExam() {
     setSaving(true)
     const data = { title: editing.title, level: editing.level, date: editing.date, location: editing.location, capacity: editing.capacity, price: editing.price, status: editing.status || 'Ouvert' }
@@ -218,7 +210,6 @@ export default function AdminDashboard() {
     setSaving(false); setModal(null); setEditing(null); fetchAll()
   }
 
-  // ── Sauvegarde dossier visa ─────────────────────────────────────────────────
   async function saveVisa() {
     setSaving(true)
     const data = { candidate_id: editing.candidate_id, destination: editing.destination, step: editing.step || 'depot', notes: editing.notes, archived: false }
@@ -227,7 +218,6 @@ export default function AdminDashboard() {
     setSaving(false); setModal(null); setEditing(null); fetchAll()
   }
 
-  // ── Créer compte admin ──────────────────────────────────────────────────────
   async function saveTeamMember() {
     setSaving(true)
     try {
@@ -244,17 +234,16 @@ export default function AdminDashboard() {
   }
 
   async function updateTeamRole(id, role) { await supabase.from('profiles').update({ role }).eq('id', id); fetchAll() }
-
   const handleLogout = async () => { await signOut(); navigate('/') }
 
   const filteredCandidates = candidates.filter(c =>
+    !ADMIN_ROLES.includes(c.role) &&
     (filter === 'Tous' || c.dossier_status === filter) &&
     (c.full_name?.toLowerCase().includes(search.toLowerCase()) || c.email?.toLowerCase().includes(search.toLowerCase()))
   )
 
   const isSuperAdmin = profile?.role === 'super_admin'
 
-  // ── RENDER ──────────────────────────────────────────────────────────────────
   return (
     <div style={{ display: 'flex', minHeight: '100vh', fontFamily: "'DM Sans',sans-serif", background: '#F7F8FC' }}>
 
@@ -271,7 +260,7 @@ export default function AdminDashboard() {
         <nav style={{ flex: 1, padding: '12px 8px', overflowY: 'auto' }}>
           {MODULES.map(({ id, label, icon: Icon }) => (
             <button key={id} onClick={() => { setTab(id); setSearch(''); setFilter('Tous') }}
-              style={{ display: 'flex', alignItems: 'center', gap: 9, width: '100%', background: tab === id ? RED : 'transparent', color: tab === id ? '#fff' : 'rgba(255,255,255,0.55)', border: 'none', borderRadius: 9, padding: '9px 12px', fontSize: 12.5, fontWeight: 600, cursor: 'pointer', marginBottom: 2, transition: 'all .15s', textAlign: 'left' }}>
+              style={{ display: 'flex', alignItems: 'center', gap: 9, width: '100%', background: tab === id ? RED : 'transparent', color: tab === id ? '#fff' : 'rgba(255,255,255,0.55)', border: 'none', borderRadius: 9, padding: '9px 12px', fontSize: 12.5, fontWeight: 600, cursor: 'pointer', marginBottom: 2, textAlign: 'left' }}>
               <Icon size={14} />{label}
             </button>
           ))}
@@ -289,34 +278,36 @@ export default function AdminDashboard() {
           </button>
         </div>
       </aside>
+
       <main style={{ marginLeft: 232, flex: 1, padding: '24px 28px' }}>
+
+        {/* ── TABLEAU DE BORD ── */}
+        {tab === 'dashboard' && (
           <div>
             <h1 style={{ fontFamily: "'Playfair Display',serif", fontSize: 26, color: NAVY, marginBottom: 22 }}>Tableau de bord</h1>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 16, marginBottom: 26 }}>
-              <StatCard label="Candidats"       value={candidates.length}                                                        icon={Users}      color="#3B82F6" bg="#DBEAFE" />
+              <StatCard label="Candidats"       value={filteredCandidates.length}                                                     icon={Users}      color="#3B82F6" bg="#DBEAFE" />
               <StatCard label="Revenus validés"  value={`${payments.filter(p=>p.status==='Validé').reduce((s,p)=>s+Number(p.amount),0).toLocaleString()} XAF`} icon={CreditCard} color="#10B981" bg="#D1FAE5" />
-              <StatCard label="Documents reçus"  value={documents.length}                                                         icon={FileText}   color="#F59E0B" bg="#FEF3C7" />
-              <StatCard label="Dossiers actifs"  value={visas.filter(v=>!v.archived).length}                                     icon={Globe2}     color={RED}     bg="#FEE2E2" />
+              <StatCard label="Documents reçus"  value={documents.length}                                                              icon={FileText}   color="#F59E0B" bg="#FEF3C7" />
+              <StatCard label="Dossiers actifs"  value={visas.filter(v=>!v.archived).length}                                          icon={Globe2}     color={RED}     bg="#FEE2E2" />
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
-              {/* Derniers candidats */}
               <div style={{ background: '#fff', borderRadius: 16, padding: '22px 24px', boxShadow: '0 2px 14px rgba(0,0,0,0.06)' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
                   <h3 style={{ fontFamily: "'Playfair Display',serif", fontSize: 17, color: NAVY }}>Derniers candidats</h3>
                   <button onClick={() => setTab('candidates')} style={{ color: RED, fontSize: 12.5, fontWeight: 600, background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 3 }}>Voir tout <ChevronRight size={13} /></button>
-                onClick={() => setSelectedCandidate(c)}
-                 </div>
-                {candidates.slice(0,5).map(c => (
-                  <div key={c.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '9px 0', borderBottom: '1px solid #F1F5FB' }}>
+                </div>
+                {candidates.filter(c => !ADMIN_ROLES.includes(c.role)).slice(0,5).map(c => (
+                  <div key={c.id} onClick={() => { setSelectedCandidate(c); setTab('candidates') }}
+                    style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '9px 0', borderBottom: '1px solid #F1F5FB', cursor: 'pointer' }}>
                     <div>
                       <div style={{ fontSize: 13.5, fontWeight: 600, color: NAVY }}>{c.full_name}</div>
-                      <div style={{ fontSize: 12, color: '#94A3B8' }}>{c.destination}</div>
+                      <div style={{ fontSize: 12, color: '#94A3B8' }}>{c.destination || '—'}</div>
                     </div>
                     <Tag status={c.dossier_status} />
                   </div>
                 ))}
               </div>
-              {/* Paiements récents */}
               <div style={{ background: '#fff', borderRadius: 16, padding: '22px 24px', boxShadow: '0 2px 14px rgba(0,0,0,0.06)' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
                   <h3 style={{ fontFamily: "'Playfair Display',serif", fontSize: 17, color: NAVY }}>Paiements récents</h3>
@@ -337,7 +328,9 @@ export default function AdminDashboard() {
         )}
 
         {/* ── CANDIDATS ── */}
-        {tab === "candidates" && selectedCandidate ? <CandidateDetail candidate={selectedCandidate} onBack={()=>setSelectedCandidate(null)}/> : tab === "candidates" && (
+        {tab === 'candidates' && selectedCandidate
+          ? <CandidateDetail candidate={selectedCandidate} onBack={() => setSelectedCandidate(null)}/>
+          : tab === 'candidates' && (
           <div>
             <h1 style={{ fontFamily: "'Playfair Display',serif", fontSize: 26, color: NAVY, marginBottom: 18 }}>Gestion des Candidats</h1>
             <div style={{ display: 'flex', gap: 10, marginBottom: 18, flexWrap: 'wrap' }}>
@@ -351,21 +344,23 @@ export default function AdminDashboard() {
             </div>
             <div style={{ background: '#fff', borderRadius: 14, boxShadow: '0 2px 14px rgba(0,0,0,0.06)', overflow: 'hidden' }}>
               <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-                <THead cols={['Nom','Email','Téléphone','Destination','Statut','Changer statut']} />
+                <THead cols={['Nom','Email','Téléphone','Destination','Statut','Actions']} />
                 <tbody>
                   {filteredCandidates.map((c,i) => (
                     <tr key={c.id} style={{ background: i%2===0?'#fff':'#F7F8FC', borderBottom: '1px solid #F1F5FB' }}>
                       <td style={{ padding:'11px 14px', fontSize:13, fontWeight:600, color:NAVY }}>{c.full_name}</td>
                       <td style={{ padding:'11px 14px', fontSize:12.5, color:'#64748B' }}>{c.email}</td>
-                      <td style={{ padding:'11px 14px', fontSize:12.5, color:'#64748B' }}>{c.phone}</td>
-                      <td style={{ padding:'11px 14px', fontSize:12.5 }}>{c.destination}</td>
-                      <td style={{ padding:'11px 14px' }}><Tag status={c.dossier_status} /></td>
+                      <td style={{ padding:'11px 14px', fontSize:12.5, color:'#64748B' }}>{c.phone || '—'}</td>
+                      <td style={{ padding:'11px 14px', fontSize:12.5 }}>{c.destination || '—'}</td>
                       <td style={{ padding:'11px 14px' }}>
-                          <button onClick={async()=>{if(window.confirm("Supprimer ?")){await supabase.from("profiles").delete().eq("id",c.id);fetchAll()}}} style={{background:"#EF4444",color:"#fff",border:"none",borderRadius:7,padding:"5px 8px",fontSize:11,fontWeight:700,cursor:"pointer",marginRight:4}}>Suppr</button>
-                          <button onClick={()=>setSelectedCandidate(c)} style={{background:"#1B3E6F",color:"#fff",border:"none",borderRadius:7,padding:"5px 8px",fontSize:11,fontWeight:700,cursor:"pointer",marginRight:4}}>Voir</button>
-                          <select onChange={e=>updateCandidateStatus(c.id,e.target.value)} value={c.dossier_status} style={{fontSize:12,border:"1px solid #E2E8F0",borderRadius:7,padding:"4px 8px",cursor:"pointer",background:"#fff"}}>
-                            {["En attente","En cours","Validé","Rejeté"].map(s=><option key={s}>{s}</option>)}
-                          </select>
+                        <select onChange={e => updateCandidateStatus(c.id,e.target.value)} value={c.dossier_status || 'En attente'}
+                          style={{ fontSize:12, border:'1px solid #E2E8F0', borderRadius:7, padding:'4px 8px', cursor:'pointer', background:'#fff' }}>
+                          {['En attente','En cours','Validé','Rejeté'].map(s => <option key={s}>{s}</option>)}
+                        </select>
+                      </td>
+                      <td style={{ padding:'11px 14px', display:'flex', gap:5 }}>
+                        <Btn small onClick={() => setSelectedCandidate(c)} color={BL}>Voir</Btn>
+                        <Btn small onClick={async () => { if(window.confirm('Supprimer ce candidat ?')) { await supabase.from('profiles').delete().eq('id',c.id); fetchAll() }}} color="#EF4444">Suppr</Btn>
                       </td>
                     </tr>
                   ))}
@@ -373,6 +368,14 @@ export default function AdminDashboard() {
                 </tbody>
               </table>
             </div>
+          </div>
+        )}
+
+        {/* ── MESSAGERIE ── */}
+        {tab === 'messagerie' && (
+          <div>
+            <h1 style={{ fontFamily: "'Playfair Display',serif", fontSize: 26, color: NAVY, marginBottom: 20 }}>Messagerie</h1>
+            <AdminMessaging candidates={candidates.filter(c => !ADMIN_ROLES.includes(c.role))} />
           </div>
         )}
 
@@ -497,7 +500,7 @@ export default function AdminDashboard() {
                       </td>
                     </tr>
                   ))}
-                  {exams.length===0 && <tr><td colSpan={8} style={{ padding:'28px', textAlign:'center', color:'#94A3B8' }}>Aucune session. Créez votre première session !</td></tr>}
+                  {exams.length===0 && <tr><td colSpan={8} style={{ padding:'28px', textAlign:'center', color:'#94A3B8' }}>Aucune session.</td></tr>}
                 </tbody>
               </table>
             </div>
@@ -526,7 +529,7 @@ export default function AdminDashboard() {
                   </div>
                 </div>
               ))}
-              {articles.length===0 && <div style={{ background:'#fff', borderRadius:14, padding:'48px', textAlign:'center', color:'#94A3B8' }}>Aucun article. Créez votre premier article !</div>}
+              {articles.length===0 && <div style={{ background:'#fff', borderRadius:14, padding:'48px', textAlign:'center', color:'#94A3B8' }}>Aucun article.</div>}
             </div>
           </div>
         )}
@@ -549,15 +552,14 @@ export default function AdminDashboard() {
                     <span style={{ background:p.is_active?'#D1FAE5':'#F1F5FB', color:p.is_active?'#10B981':'#94A3B8', fontSize:11, fontWeight:700, padding:'3px 9px', borderRadius:999 }}>{p.is_active?'Actif':'Inactif'}</span>
                   </div>
                   {p.contact_email && <div style={{ fontSize:12.5, color:'#64748B', marginBottom:12 }}>✉️ {p.contact_email}</div>}
-                  {p.description && <div style={{ fontSize:12.5, color:'#64748B', marginBottom:14, lineHeight:1.5 }}>{p.description}</div>}
                   <div style={{ display:'flex', gap:6 }}>
                     <Btn small outline onClick={() => { setEditing(p); setModal('partner') }} color={NAVY}><Edit2 size={12} /> Modifier</Btn>
-                    <Btn small onClick={() => togglePartner(p.id,p.is_active)} color={p.active?'#F59E0B':'#10B981'}>{p.is_active?'Désactiver':'Activer'}</Btn>
+                    <Btn small onClick={() => togglePartner(p.id,p.is_active)} color={p.is_active?'#F59E0B':'#10B981'}>{p.is_active?'Désactiver':'Activer'}</Btn>
                     <Btn small onClick={() => deleteItem('partners',p.id)} color="#EF4444"><Trash2 size={12} /></Btn>
                   </div>
                 </div>
               ))}
-              {partners.length===0 && <div style={{ background:'#fff', borderRadius:14, padding:'48px', textAlign:'center', color:'#94A3B8', gridColumn:'1/-1' }}>Aucun partenaire. Ajoutez votre premier partenaire !</div>}
+              {partners.length===0 && <div style={{ background:'#fff', borderRadius:14, padding:'48px', textAlign:'center', color:'#94A3B8', gridColumn:'1/-1' }}>Aucun partenaire.</div>}
             </div>
           </div>
         )}
@@ -598,15 +600,12 @@ export default function AdminDashboard() {
             </div>
           </div>
         )}
+
       </main>
 
-      {/* ══════════════════════════════════════════════════════════════════════
-          MODALS
-      ══════════════════════════════════════════════════════════════════════ */}
-
-      {/* Modal Article */}
+      {/* MODALS */}
       {modal === 'article' && editing && (
-        <Modal title={editing.id ? 'Modifier l\'article' : 'Nouvel article'} onClose={() => { setModal(null); setEditing(null) }}>
+        <Modal title={editing.id ? "Modifier l'article" : 'Nouvel article'} onClose={() => { setModal(null); setEditing(null) }}>
           <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:12 }}>
             <Input label="Titre FR *" value={editing.title_fr||''} onChange={v => setEditing(p=>({...p,title_fr:v}))} required />
             <Input label="Titre DE"   value={editing.title_de||''} onChange={v => setEditing(p=>({...p,title_de:v}))} />
@@ -614,8 +613,8 @@ export default function AdminDashboard() {
             <Select label="Catégorie" value={editing.category||'Migration'} onChange={v => setEditing(p=>({...p,category:v}))}
               options={[{value:'Migration',label:'Migration'},{value:'Formation',label:'Formation'},{value:'Témoignages',label:'Témoignages'},{value:'Actualités',label:'Actualités'},{value:'Visa',label:'Visa'}]} />
           </div>
-          <Textarea label="Résumé FR" value={editing.excerpt_fr||''} onChange={v => setEditing(p=>({...p,excerpt_fr:v}))} rows={2} placeholder="Courte description visible dans la liste..." />
-          <Textarea label="Contenu FR (Markdown)" value={editing.content_fr||''} onChange={v => setEditing(p=>({...p,content_fr:v}))} rows={8} placeholder="## Titre&#10;Contenu en Markdown..." />
+          <Textarea label="Résumé FR" value={editing.excerpt_fr||''} onChange={v => setEditing(p=>({...p,excerpt_fr:v}))} rows={2} />
+          <Textarea label="Contenu FR (Markdown)" value={editing.content_fr||''} onChange={v => setEditing(p=>({...p,content_fr:v}))} rows={8} />
           <Textarea label="Contenu DE" value={editing.content_de||''} onChange={v => setEditing(p=>({...p,content_de:v}))} rows={4} />
           <Textarea label="Contenu EN" value={editing.content_en||''} onChange={v => setEditing(p=>({...p,content_en:v}))} rows={4} />
           <div style={{ display:'flex', alignItems:'center', gap:10, marginBottom:16 }}>
@@ -629,21 +628,16 @@ export default function AdminDashboard() {
         </Modal>
       )}
 
-      {/* Modal Partenaire */}
       {modal === 'partner' && editing && (
         <Modal title={editing.id ? 'Modifier le partenaire' : 'Nouveau partenaire'} onClose={() => { setModal(null); setEditing(null) }}>
           <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:12 }}>
-            <Input label="Nom *"      value={editing.name||''}          onChange={v => setEditing(p=>({...p,name:v}))} required />
-            <Select label="Pays"      value={editing.country||'Allemagne'} onChange={v => setEditing(p=>({...p,country:v}))}
+            <Input label="Nom *" value={editing.name||''} onChange={v => setEditing(p=>({...p,name:v}))} required />
+            <Select label="Pays" value={editing.country||'Allemagne'} onChange={v => setEditing(p=>({...p,country:v}))}
               options={[{value:'Allemagne',label:'🇩🇪 Allemagne'},{value:'Malte',label:'🇲🇹 Malte'},{value:'Pologne',label:'🇵🇱 Pologne'}]} />
-            <Input label="Type"       value={editing.type||''}           onChange={v => setEditing(p=>({...p,type:v}))}   placeholder="ex: Clinique, Université..." />
+            <Input label="Type" value={editing.type||''} onChange={v => setEditing(p=>({...p,type:v}))} />
             <Input label="Email contact" value={editing.contact_email||''} onChange={v => setEditing(p=>({...p,contact_email:v}))} type="email" />
           </div>
           <Textarea label="Description" value={editing.description||''} onChange={v => setEditing(p=>({...p,description:v}))} rows={3} />
-          <div style={{ display:'flex', alignItems:'center', gap:10, marginBottom:16 }}>
-            <input type="checkbox" id="active" checked={editing.active!==false} onChange={e => setEditing(p=>({...p,active:e.target.checked}))} />
-            <label htmlFor="active" style={{ fontSize:13.5, color:NAVY, fontWeight:600 }}>Afficher sur le site</label>
-          </div>
           <div style={{ display:'flex', gap:10, justifyContent:'flex-end' }}>
             <Btn outline onClick={() => { setModal(null); setEditing(null) }} color="#64748B">Annuler</Btn>
             <Btn onClick={savePartner} color={RED}><Save size={14} /> {saving?'Enregistrement...':'Enregistrer'}</Btn>
@@ -651,18 +645,17 @@ export default function AdminDashboard() {
         </Modal>
       )}
 
-      {/* Modal Session Examen */}
       {modal === 'exam' && editing && (
         <Modal title={editing.id ? 'Modifier la session' : 'Nouvelle session'} onClose={() => { setModal(null); setEditing(null) }}>
           <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:12 }}>
-            <Input label="Titre *"    value={editing.title||''}    onChange={v => setEditing(p=>({...p,title:v}))} required placeholder="ex: Examen B2 — Mai 2026" />
-            <Select label="Niveau"    value={editing.level||'A1'}  onChange={v => setEditing(p=>({...p,level:v}))}
+            <Input label="Titre *" value={editing.title||''} onChange={v => setEditing(p=>({...p,title:v}))} required />
+            <Select label="Niveau" value={editing.level||'A1'} onChange={v => setEditing(p=>({...p,level:v}))}
               options={['A1','A2','B1','B2','C1'].map(l => ({value:l,label:l}))} />
-            <Input label="Date"       value={editing.date||''}     onChange={v => setEditing(p=>({...p,date:v}))} type="date" />
-            <Input label="Lieu"       value={editing.location||''} onChange={v => setEditing(p=>({...p,location:v}))} placeholder="Yaoundé — Essos" />
-            <Input label="Places"     value={editing.capacity||''} onChange={v => setEditing(p=>({...p,capacity:v}))} type="number" placeholder="20" />
-            <Input label="Prix (XAF)" value={editing.price||''}    onChange={v => setEditing(p=>({...p,price:v}))}   type="number" placeholder="25000" />
-            <Select label="Statut"    value={editing.status||'Ouvert'} onChange={v => setEditing(p=>({...p,status:v}))}
+            <Input label="Date" value={editing.date||''} onChange={v => setEditing(p=>({...p,date:v}))} type="date" />
+            <Input label="Lieu" value={editing.location||''} onChange={v => setEditing(p=>({...p,location:v}))} />
+            <Input label="Places" value={editing.capacity||''} onChange={v => setEditing(p=>({...p,capacity:v}))} type="number" />
+            <Input label="Prix (XAF)" value={editing.price||''} onChange={v => setEditing(p=>({...p,price:v}))} type="number" />
+            <Select label="Statut" value={editing.status||'Ouvert'} onChange={v => setEditing(p=>({...p,status:v}))}
               options={[{value:'Ouvert',label:'Ouvert'},{value:'Complet',label:'Complet'},{value:'Clôturé',label:'Clôturé'}]} />
           </div>
           <div style={{ display:'flex', gap:10, justifyContent:'flex-end', marginTop:8 }}>
@@ -672,16 +665,15 @@ export default function AdminDashboard() {
         </Modal>
       )}
 
-      {/* Modal Dossier Visa */}
       {modal === 'visa' && editing && (
         <Modal title={editing.id ? 'Modifier le dossier' : 'Nouveau dossier visa'} onClose={() => { setModal(null); setEditing(null) }}>
           <Select label="Candidat" value={editing.candidate_id||''} onChange={v => setEditing(p=>({...p,candidate_id:v}))}
-            options={[{value:'',label:'— Choisir un candidat —'},...candidates.map(c => ({value:c.id,label:c.full_name}))]} />
+            options={[{value:'',label:'— Choisir un candidat —'},...candidates.filter(c=>!ADMIN_ROLES.includes(c.role)).map(c => ({value:c.id,label:c.full_name}))]} />
           <Select label="Destination" value={editing.destination||'Allemagne'} onChange={v => setEditing(p=>({...p,destination:v}))}
             options={[{value:'Allemagne',label:'🇩🇪 Allemagne'},{value:'Malte',label:'🇲🇹 Malte'},{value:'Pologne',label:'🇵🇱 Pologne'}]} />
           <Select label="Étape actuelle" value={editing.step||'depot'} onChange={v => setEditing(p=>({...p,step:v}))}
             options={VISA_STEPS.map(s => ({value:s,label:VISA_STEP_LABELS[s]}))} />
-          <Textarea label="Notes internes" value={editing.notes||''} onChange={v => setEditing(p=>({...p,notes:v}))} rows={3} placeholder="Remarques, documents manquants..." />
+          <Textarea label="Notes internes" value={editing.notes||''} onChange={v => setEditing(p=>({...p,notes:v}))} rows={3} />
           <div style={{ display:'flex', gap:10, justifyContent:'flex-end' }}>
             <Btn outline onClick={() => { setModal(null); setEditing(null) }} color="#64748B">Annuler</Btn>
             <Btn onClick={saveVisa} color={RED}><Save size={14} /> {saving?'Enregistrement...':'Enregistrer'}</Btn>
@@ -689,14 +681,13 @@ export default function AdminDashboard() {
         </Modal>
       )}
 
-      {/* Modal Membre équipe */}
       {modal === 'team' && editing && (
         <Modal title="Ajouter un membre" onClose={() => { setModal(null); setEditing(null) }}>
           <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:12 }}>
             <Input label="Nom complet *" value={editing.full_name||''} onChange={v => setEditing(p=>({...p,full_name:v}))} required />
-            <Input label="Email *"       value={editing.email||''}     onChange={v => setEditing(p=>({...p,email:v}))}     required type="email" />
-            <Input label="Téléphone"     value={editing.phone||''}     onChange={v => setEditing(p=>({...p,phone:v}))} />
-            <Select label="Rôle"         value={editing.role||'editor'} onChange={v => setEditing(p=>({...p,role:v}))}
+            <Input label="Email *" value={editing.email||''} onChange={v => setEditing(p=>({...p,email:v}))} required type="email" />
+            <Input label="Téléphone" value={editing.phone||''} onChange={v => setEditing(p=>({...p,phone:v}))} />
+            <Select label="Rôle" value={editing.role||'editor'} onChange={v => setEditing(p=>({...p,role:v}))}
               options={Object.entries(ROLE_LABELS).map(([v,l]) => ({value:v,label:l}))} />
           </div>
           <div style={{ position:'relative', marginBottom:14 }}>
