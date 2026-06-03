@@ -142,6 +142,8 @@ export default function AdminDashboard() {
   const [modal,   setModal]   = useState(null)
   const [editing, setEditing] = useState(null)
   const [saving,  setSaving]  = useState(false)
+  const [aiLoading, setAiLoading] = useState(false)
+  const [aiPrompt, setAiPrompt] = useState('')
   const [showPwd, setShowPwd] = useState(false)
 
   useEffect(() => {
@@ -179,6 +181,79 @@ export default function AdminDashboard() {
   const togglePartner         = async (id, active) => { await supabase.from('partners').update({ active: !active }).eq('id', id); fetchAll() }
   const deleteItem            = async (table, id) => { if (!window.confirm('Confirmer la suppression ?')) return; await supabase.from(table).delete().eq('id', id); fetchAll() }
 
+  async function generateArticleAI() {
+    if (!aiPrompt.trim()) return alert('Décrivez le sujet de l\'article.')
+    setAiLoading(true)
+    try {
+      const response = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          model: 'claude-sonnet-4-20250514',
+          max_tokens: 1000,
+          messages: [{
+            role: 'user',
+            content: `Tu es rédacteur pour Reisetür 237, agence de mobilité internationale basée à Yaoundé (Cameroun) aidant les candidats camerounais à partir en Allemagne, Malte ou Pologne.
+
+Rédige un article de blog professionnel en français sur ce sujet : "${aiPrompt}"
+
+Réponds UNIQUEMENT en JSON valide sans aucun texte avant ou après, sans balises markdown, avec cette structure exacte :
+{
+  "title_fr": "Titre accrocheur et professionnel",
+  "category": "Formation|Visa|Témoignages|Actualités|Migration",
+  "excerpt_fr": "Résumé en 2 phrases maximum pour la liste des articles.",
+  "content_fr": "Contenu complet en Markdown avec ## titres, **gras**, listes à puces. Minimum 400 mots. Inclure des conseils pratiques, des chiffres concrets, des étapes claires. Adapté aux candidats camerounais."
+}`
+          }]
+        })
+      })
+      const data = await response.json()
+      const text = data.content?.[0]?.text || ''
+      const clean = text.replace(/\`\`\`json|\`\`\`/g, '').trim()
+      const parsed = JSON.parse(clean)
+      setEditing(prev => ({ ...prev, ...parsed }))
+      setAiPrompt('')
+    } catch(e) {
+      alert('Erreur IA : ' + e.message)
+    } finally { setAiLoading(false) }
+  }
+
+  async function generatePartnerAI() {
+    if (!editing?.name) return alert('Renseignez d\'abord le nom du partenaire.')
+    setAiLoading(true)
+    try {
+      const response = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          model: 'claude-sonnet-4-20250514',
+          max_tokens: 1000,
+          messages: [{
+            role: 'user',
+            content: `Tu es rédacteur pour Reisetür 237, agence de mobilité internationale à Yaoundé.
+
+Rédige une description professionnelle et discrète (sans mentionner le nom de l'institution) pour ce partenaire :
+- Pays : ${editing.country || 'Allemagne'}
+- Type : ${editing.type || 'Institution partenaire'}
+- Note : ne pas citer le nom exact de l'institution
+
+Réponds UNIQUEMENT en JSON valide :
+{
+  "description": "Description professionnelle de 3-4 phrases, sobre et institutionnelle, mettant en valeur la qualité du partenariat sans nommer l'institution."
+}`
+          }]
+        })
+      })
+      const data = await response.json()
+      const text = data.content?.[0]?.text || ''
+      const clean = text.replace(/\`\`\`json|\`\`\`/g, '').trim()
+      const parsed = JSON.parse(clean)
+      setEditing(prev => ({ ...prev, description: parsed.description }))
+    } catch(e) {
+      alert('Erreur IA : ' + e.message)
+    } finally { setAiLoading(false) }
+  }
+
   async function saveArticle() {
     setSaving(true)
     const data = {
@@ -186,6 +261,7 @@ export default function AdminDashboard() {
       content_fr: editing.content_fr, content_de: editing.content_de, content_en: editing.content_en,
       excerpt_fr: editing.excerpt_fr, excerpt_de: editing.excerpt_de, excerpt_en: editing.excerpt_en,
       category: editing.category, published: editing.published || false,
+      image: editing.image || null,
       slug: editing.slug || editing.title_fr?.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,''),
       author_id: user.id,
     }
@@ -196,7 +272,7 @@ export default function AdminDashboard() {
 
   async function savePartner() {
     setSaving(true)
-    const data = { name: editing.name, country: editing.country, type: editing.type, contact_email: editing.contact_email, description: editing.description, is_active: editing.is_active ?? true }
+    const data = { name: editing.name, country: editing.country, type: editing.type, contact_email: editing.contact_email, description: editing.description, image: editing.image || null, is_active: editing.is_active ?? true }
     if (editing.id) await supabase.from('partners').update(data).eq('id', editing.id)
     else             await supabase.from('partners').insert(data)
     setSaving(false); setModal(null); setEditing(null); fetchAll()
@@ -648,24 +724,43 @@ export default function AdminDashboard() {
 
       {modal === 'article' && editing && (
         <Modal title={editing.id ? "Modifier l'article" : 'Nouvel article'} onClose={() => { setModal(null); setEditing(null) }}>
+          {/* Section IA */}
+          <div style={{ background:'linear-gradient(135deg,#1A1A1A,#1B3E6F)', borderRadius:12, padding:'16px 18px', marginBottom:18 }}>
+            <p style={{ color:'#C8A84B', fontSize:11, fontWeight:700, textTransform:'uppercase', letterSpacing:'.12em', marginBottom:8 }}>✨ Générer avec l'IA</p>
+            <p style={{ color:'rgba(255,255,255,0.6)', fontSize:12, marginBottom:10 }}>Décrivez le sujet — Claude rédige l'article complet en français</p>
+            <div style={{ display:'flex', gap:8 }}>
+              <input value={aiPrompt} onChange={e=>setAiPrompt(e.target.value)}
+                placeholder="ex: Comment obtenir un visa étudiant pour l'Allemagne depuis le Cameroun"
+                onKeyDown={e=>e.key==='Enter'&&generateArticleAI()}
+                style={{ flex:1, border:'1px solid rgba(255,255,255,0.2)', borderRadius:8, padding:'9px 12px', fontSize:13, background:'rgba(255,255,255,0.08)', color:'#fff', outline:'none', fontFamily:'inherit' }}/>
+              <button onClick={generateArticleAI} disabled={aiLoading}
+                style={{ background:'#C8A84B', color:'#1A1A1A', border:'none', borderRadius:8, padding:'9px 16px', fontSize:13, fontWeight:700, cursor:'pointer', whiteSpace:'nowrap' }}>
+                {aiLoading ? '⏳ Génération...' : '✨ Générer'}
+              </button>
+            </div>
+          </div>
           <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:12 }}>
             <Input label="Titre FR *" value={editing.title_fr||''} onChange={v => setEditing(p=>({...p,title_fr:v}))} required />
-            <Input label="Titre DE"   value={editing.title_de||''} onChange={v => setEditing(p=>({...p,title_de:v}))} />
-            <Input label="Titre EN"   value={editing.title_en||''} onChange={v => setEditing(p=>({...p,title_en:v}))} />
             <Select label="Catégorie" value={editing.category||'Migration'} onChange={v => setEditing(p=>({...p,category:v}))}
               options={[{value:'Migration',label:'Migration'},{value:'Formation',label:'Formation'},{value:'Témoignages',label:'Témoignages'},{value:'Actualités',label:'Actualités'},{value:'Visa',label:'Visa'}]} />
+            <Input label="Titre DE"   value={editing.title_de||''} onChange={v => setEditing(p=>({...p,title_de:v}))} />
+            <Input label="Titre EN"   value={editing.title_en||''} onChange={v => setEditing(p=>({...p,title_en:v}))} />
           </div>
+          <Input label="URL Image (Unsplash recommandé)" value={editing.image||''} onChange={v => setEditing(p=>({...p,image:v}))} placeholder="https://images.unsplash.com/photo-...?w=700&q=80" />
+          {editing.image && <img src={editing.image} alt="preview" style={{ width:'100%', height:120, objectFit:'cover', borderRadius:8, marginBottom:12 }}/>}
           <Textarea label="Résumé FR" value={editing.excerpt_fr||''} onChange={v => setEditing(p=>({...p,excerpt_fr:v}))} rows={2} />
-          <Textarea label="Contenu FR (Markdown)" value={editing.content_fr||''} onChange={v => setEditing(p=>({...p,content_fr:v}))} rows={8} />
-          <Textarea label="Contenu DE" value={editing.content_de||''} onChange={v => setEditing(p=>({...p,content_de:v}))} rows={4} />
-          <Textarea label="Contenu EN" value={editing.content_en||''} onChange={v => setEditing(p=>({...p,content_en:v}))} rows={4} />
-          <div style={{ display:'flex', alignItems:'center', gap:10, marginBottom:16 }}>
-            <input type="checkbox" id="pub" checked={editing.published||false} onChange={e => setEditing(p=>({...p,published:e.target.checked}))} />
-            <label htmlFor="pub" style={{ fontSize:13.5, color:NAVY, fontWeight:600 }}>Publier immédiatement</label>
+          <Textarea label="Contenu FR (Markdown)" value={editing.content_fr||''} onChange={v => setEditing(p=>({...p,content_fr:v}))} rows={10} />
+          <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:12 }}>
+            <Textarea label="Contenu DE" value={editing.content_de||''} onChange={v => setEditing(p=>({...p,content_de:v}))} rows={4} />
+            <Textarea label="Contenu EN" value={editing.content_en||''} onChange={v => setEditing(p=>({...p,content_en:v}))} rows={4} />
+          </div>
+          <div style={{ display:'flex', alignItems:'center', gap:10, marginBottom:16, background:'#F0FDF4', borderRadius:8, padding:'10px 14px' }}>
+            <input type="checkbox" id="pub" checked={editing.published||false} onChange={e => setEditing(p=>({...p,published:e.target.checked}))} style={{ width:16, height:16, cursor:'pointer' }}/>
+            <label htmlFor="pub" style={{ fontSize:13.5, color:'#166534', fontWeight:700, cursor:'pointer' }}>✅ Publier immédiatement sur le site</label>
           </div>
           <div style={{ display:'flex', gap:10, justifyContent:'flex-end' }}>
             <Btn outline onClick={() => { setModal(null); setEditing(null) }} color="#64748B">Annuler</Btn>
-            <Btn onClick={saveArticle} color={RED}><Save size={14} /> {saving ? 'Enregistrement...' : 'Enregistrer'}</Btn>
+            <Btn onClick={saveArticle} color={RED}><Save size={14} /> {saving ? 'Enregistrement...' : editing.published ? 'Enregistrer et Publier' : 'Enregistrer'}</Btn>
           </div>
         </Modal>
       )}
@@ -673,13 +768,21 @@ export default function AdminDashboard() {
       {modal === 'partner' && editing && (
         <Modal title={editing.id ? 'Modifier le partenaire' : 'Nouveau partenaire'} onClose={() => { setModal(null); setEditing(null) }}>
           <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:12 }}>
-            <Input label="Nom *" value={editing.name||''} onChange={v => setEditing(p=>({...p,name:v}))} required />
+            <Input label="Nom (interne) *" value={editing.name||''} onChange={v => setEditing(p=>({...p,name:v}))} required />
             <Select label="Pays" value={editing.country||'Allemagne'} onChange={v => setEditing(p=>({...p,country:v}))}
               options={[{value:'Allemagne',label:'🇩🇪 Allemagne'},{value:'Malte',label:'🇲🇹 Malte'},{value:'Pologne',label:'🇵🇱 Pologne'}]} />
-            <Input label="Type" value={editing.type||''} onChange={v => setEditing(p=>({...p,type:v}))} />
+            <Input label="Type" value={editing.type||''} onChange={v => setEditing(p=>({...p,type:v}))} placeholder="ex: Clinique, Université..." />
             <Input label="Email contact" value={editing.contact_email||''} onChange={v => setEditing(p=>({...p,contact_email:v}))} type="email" />
           </div>
-          <Textarea label="Description" value={editing.description||''} onChange={v => setEditing(p=>({...p,description:v}))} rows={3} />
+          <Input label="URL Image" value={editing.image||''} onChange={v => setEditing(p=>({...p,image:v}))} placeholder="https://images.unsplash.com/photo-...?w=600&q=80" />
+          {editing.image && <img src={editing.image} alt="preview" style={{ width:'100%', height:100, objectFit:'cover', borderRadius:8, marginBottom:12 }}/>}
+          <div style={{ position:'relative' }}>
+            <Textarea label="Description publique (sans nommer l'institution)" value={editing.description||''} onChange={v => setEditing(p=>({...p,description:v}))} rows={4} placeholder="Description professionnelle visible sur le site..." />
+            <button onClick={generatePartnerAI} disabled={aiLoading}
+              style={{ position:'absolute', top:4, right:0, background:'linear-gradient(135deg,#1A1A1A,#1B3E6F)', color:'#C8A84B', border:'none', borderRadius:7, padding:'5px 12px', fontSize:11, fontWeight:700, cursor:'pointer' }}>
+              {aiLoading ? '⏳...' : '✨ Générer avec l'IA'}
+            </button>
+          </div>
           <div style={{ display:'flex', gap:10, justifyContent:'flex-end' }}>
             <Btn outline onClick={() => { setModal(null); setEditing(null) }} color="#64748B">Annuler</Btn>
             <Btn onClick={savePartner} color={RED}><Save size={14} /> {saving?'Enregistrement...':'Enregistrer'}</Btn>
