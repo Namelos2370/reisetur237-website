@@ -9,7 +9,8 @@ const NAVY = '#1A1A1A', RED = '#C0392B', GOLD = '#C8A84B'
 
 export const ALL_ARTICLES = [
   {
-    id:'1', image:'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=700&q=80', slug:'ausbildung-pflege-cameroun-guide',
+    id:'1', image:'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=700&q=80',
+    slug:'ausbildung-pflege-cameroun-guide',
     title_fr:'Guide complet : Partir en Ausbildung Pflege depuis le Cameroun',
     title_de:'Vollständiger Leitfaden: Ausbildung Pflege aus Kamerun',
     title_en:'Complete Guide: Ausbildung Pflege from Cameroon',
@@ -70,7 +71,8 @@ Avant votre départ, nous vous orientons pour le logement, l'assurance santé in
 Vous souhaitez démarrer votre parcours Ausbildung ? Contactez Reisetür 237 dès aujourd'hui.`,
   },
   {
-    id:'2', image:'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=700&q=80', slug:'visa-etudiant-allemagne-documents',
+    id:'2', image:'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=700&q=80',
+    slug:'visa-etudiant-allemagne-documents',
     title_fr:"Visa étudiant Allemagne : la liste complète des documents",
     title_de:"Studentenvisum Deutschland: die vollständige Dokumentenliste",
     title_en:"Germany Student Visa: the complete document checklist",
@@ -126,7 +128,8 @@ Pour étudier ou effectuer une Ausbildung en Allemagne, les ressortissants camer
 Reisetür 237 vérifie et constitue votre dossier complet pour maximiser vos chances.`,
   },
   {
-    id:'3', image:'https://images.unsplash.com/photo-1527613426441-4da17471b66d?w=700&q=80', slug:'temoignage-marie-infirmiere-berlin',
+    id:'3', image:'https://images.unsplash.com/photo-1527613426441-4da17471b66d?w=700&q=80',
+    slug:'temoignage-marie-infirmiere-berlin',
     title_fr:"Témoignage : Marie-Noëlle, infirmière à Berlin grâce à Reisetür 237",
     title_de:"Erfahrungsbericht: Marie-Noëlle, Krankenschwester in Berlin",
     title_en:"Testimonial: Marie-Noëlle, nurse in Berlin thanks to Reisetür 237",
@@ -164,7 +167,8 @@ Reisetür 237 vérifie et constitue votre dossier complet pour maximiser vos cha
 *Marie-Noëlle est l'une des candidates dont Reisetür 237 a accompagné le dossier de A à Z, de la première leçon d'allemand jusqu'à son installation à Berlin.*`,
   },
   {
-    id:'4', image:'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=700&q=80', slug:'temoignages-groupe-formation-allemagne',
+    id:'4', image:'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=700&q=80',
+    slug:'temoignages-groupe-formation-allemagne',
     title_fr:"Ils sont partis ensemble : 3 candidats, une même école à Berlin",
     title_de:"Sie gingen zusammen: 3 Kandidaten, eine Schule in Berlin",
     title_en:"They left together: 3 candidates, one school in Berlin",
@@ -194,7 +198,8 @@ Reisetür 237 vérifie et constitue votre dossier complet pour maximiser vos cha
 *Jean-Paul, Honorine et Leslie font partie de la même promotion Reisetür 237. Leur départ coordonné a été organisé avec leur école partenaire à Berlin.*`,
   },
   {
-    id:'5', image:'https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=700&q=80', slug:'temoignages-formations-differentes',
+    id:'5', image:'https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=700&q=80',
+    slug:'temoignages-formations-differentes',
     title_fr:"Deux parcours différents, deux réussites : Yvan et Valerie",
     title_de:"Zwei verschiedene Wege, zwei Erfolge: Yvan und Valerie",
     title_en:"Two different paths, two successes: Yvan and Valerie",
@@ -226,7 +231,8 @@ Malte c'est petit mais dynamique. Il y a beaucoup d'étudiants internationaux, l
 *Yvan et Valerie illustrent la diversité des destinations et des parcours que Reisetür 237 accompagne, de l'Allemagne à Malte, selon le profil et les ambitions de chaque candidat.*`,
   },
   {
-    id:'6', image:'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=700&q=80', slug:'malte-etudes-anglophones',
+    id:'6', image:'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=700&q=80',
+    slug:'malte-etudes-anglophones',
     title_fr:"Étudier à Malte : l'option anglophone abordable en Europe",
     title_de:"Studieren auf Malta: die erschwingliche englischsprachige Option",
     title_en:"Study in Malta: the affordable English-language option in Europe",
@@ -283,7 +289,14 @@ export default function BlogPage() {
 
   useEffect(() => {
     supabase.from('articles').select('*').eq('published',true).order('created_at',{ascending:false})
-      .then(({ data }) => { if (data?.length > 0) setArticles([...ALL_ARTICLES, ...data]) })
+      .then(({ data }) => {
+        if (data?.length > 0) {
+          // Fusionner articles statiques + Supabase, sans doublons
+          const supabaseIds = data.map(a => a.slug)
+          const staticFiltered = ALL_ARTICLES.filter(a => !supabaseIds.includes(a.slug))
+          setArticles([...data, ...staticFiltered])
+        }
+      })
   }, [])
 
   const getTitle   = a => a[`title_${lang}`]   || a.title_fr   || ''
@@ -331,36 +344,17 @@ export default function BlogPage() {
             ? <div style={{ textAlign:'center', padding:'64px 0', color:'#94A3B8' }}><BookOpen size={40} style={{ marginBottom:12, opacity:.4 }}/><p>{L.none}</p></div>
             : <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fill,minmax(310px,1fr))', gap:22 }}>
                 {filtered.map((a,i) => {
-                  // Vérification de l'image
-                  const hasImage = !!a.image;
-                  // Dégradé par défaut si pas d'image
-                  const fallbackBg = i%3===0 ? `linear-gradient(135deg,${NAVY},#2a0707)` : i%3===1 ? `linear-gradient(135deg,#1B3E6F,#2563A8)` : `linear-gradient(135deg,${NAVY},${RED})`;
-                  
+                  const cs = CAT_COLORS[a.category] || { bg:'#F1F5FB', c:'#64748B' }
                   return (
                     <Link key={a.id} to={`/blog/${a.slug||a.id}`} style={{ textDecoration:'none' }}>
                       <div style={{ background:'#fff', borderRadius:18, overflow:'hidden', boxShadow:'0 2px 16px rgba(0,0,0,0.07)', border:'1.5px solid #F1F5FB', height:'100%', display:'flex', flexDirection:'column' }}>
-                        
-                        {/* Zone d'en-tête de la carte avec l'image ajoutée ici */}
-                        <div style={{ 
-                          background: hasImage ? `url(${a.image}) center/cover no-repeat` : fallbackBg, 
-                          padding:'26px 22px 18px', 
-                          minHeight: 160, // Agrandit l'en-tête pour bien voir l'image
-                          position: 'relative',
-                          display: 'flex',
-                          flexDirection: 'column',
-                          justifyContent: 'space-between'
-                        }}>
-                          {/* Voile sombre pour que le texte reste lisible sur l'image */}
-                          {hasImage && <div style={{ position:'absolute', inset:0, background:'rgba(0,0,0,0.35)' }} />}
-                          
-                          <div style={{ position:'relative', zIndex:1 }}>
-                            <div style={{ fontSize:28, marginBottom:6 }}>{ICONS[a.category]||'📰'}</div>
-                          </div>
-                          <div style={{ position:'relative', zIndex:1 }}>
-                            <span style={{ background:'rgba(255,255,255,0.25)', backdropFilter:'blur(4px)', color:'#fff', fontSize:11, fontWeight:700, padding:'3px 10px', borderRadius:999 }}>{a.category}</span>
-                          </div>
+                        <div style={{ position:'relative', height:180, overflow:'hidden' }}>
+                          {a.image ? <img src={a.image} alt={getTitle(a)} style={{ width:'100%', height:'100%', objectFit:'cover' }} loading='lazy'/> : <div style={{ height:'100%', background:i%3===0?`linear-gradient(135deg,${NAVY},#2a0707)`:i%3===1?`linear-gradient(135deg,#1B3E6F,#2563A8)`:`linear-gradient(135deg,${NAVY},${RED})` }}/>}
+                          <div style={{ position:'absolute', inset:0, background:'linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.6))' }}/>
+                          <span style={{ position:'absolute', top:12, left:12, background:'rgba(255,255,255,0.15)', color:'#fff', fontSize:11, fontWeight:700, padding:'4px 10px', borderRadius:999 }}>{a.category}</span>
+                          <span style={{ position:'absolute', bottom:12, left:12, fontSize:22 }}>{ICONS[a.category]||'📰'}</span>
                         </div>
-
+                        </div>
                         <div style={{ padding:'18px 20px', flex:1, display:'flex', flexDirection:'column' }}>
                           <h3 style={{ fontFamily:"'Playfair Display',serif", fontSize:15.5, fontWeight:700, color:NAVY, lineHeight:1.4, marginBottom:10, flex:1 }}>{getTitle(a)}</h3>
                           <p style={{ color:'#64748B', fontSize:13, lineHeight:1.65, marginBottom:14 }}>{(getExcerpt(a)||'').slice(0,110)}...</p>

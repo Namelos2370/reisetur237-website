@@ -185,26 +185,20 @@ export default function AdminDashboard() {
     if (!aiPrompt.trim()) return alert('Décrivez le sujet de l\'article.')
     setAiLoading(true)
     try {
-      const response = await fetch('https://api.anthropic.com/v1/messages', {
+      const response = await fetch('/api/ai-generate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          model: 'claude-sonnet-4-20250514',
-          max_tokens: 1000,
-          messages: [{
-            role: 'user',
-            content: `Tu es rédacteur pour Reisetür 237, agence de mobilité internationale basée à Yaoundé (Cameroun) aidant les candidats camerounais à partir en Allemagne, Malte ou Pologne.
+          systemPrompt: 'Tu es rédacteur expert pour Reisetür 237, agence de mobilité internationale à Yaoundé (Cameroun). Tu rédiges des articles professionnels pour des candidats camerounais souhaitant partir en Allemagne, Malte ou Pologne.',
+          prompt: `Rédige un article de blog professionnel en français sur ce sujet : "${aiPrompt}"
 
-Rédige un article de blog professionnel en français sur ce sujet : "${aiPrompt}"
-
-Réponds UNIQUEMENT en JSON valide sans aucun texte avant ou après, sans balises markdown, avec cette structure exacte :
+Réponds UNIQUEMENT en JSON valide sans texte avant ou après :
 {
   "title_fr": "Titre accrocheur et professionnel",
   "category": "Formation|Visa|Témoignages|Actualités|Migration",
-  "excerpt_fr": "Résumé en 2 phrases maximum pour la liste des articles.",
-  "content_fr": "Contenu complet en Markdown avec ## titres, **gras**, listes à puces. Minimum 400 mots. Inclure des conseils pratiques, des chiffres concrets, des étapes claires. Adapté aux candidats camerounais."
+  "excerpt_fr": "Résumé en 2 phrases maximum.",
+  "content_fr": "Contenu complet en Markdown. Minimum 400 mots. Conseils pratiques, chiffres concrets, étapes claires."
 }`
-          }]
         })
       })
       const data = await response.json()
@@ -222,26 +216,19 @@ Réponds UNIQUEMENT en JSON valide sans aucun texte avant ou après, sans balise
     if (!editing?.name) return alert('Renseignez d\'abord le nom du partenaire.')
     setAiLoading(true)
     try {
-      const response = await fetch('https://api.anthropic.com/v1/messages', {
+      const response = await fetch('/api/ai-generate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          model: 'claude-sonnet-4-20250514',
-          max_tokens: 1000,
-          messages: [{
-            role: 'user',
-            content: `Tu es rédacteur pour Reisetür 237, agence de mobilité internationale à Yaoundé.
-
-Rédige une description professionnelle et discrète (sans mentionner le nom de l'institution) pour ce partenaire :
+          systemPrompt: 'Tu es rédacteur expert pour Reisetür 237, agence de mobilité internationale à Yaoundé.',
+          prompt: `Rédige une description professionnelle et discrète (SANS mentionner le nom de l'institution) pour ce partenaire :
 - Pays : ${editing.country || 'Allemagne'}
 - Type : ${editing.type || 'Institution partenaire'}
-- Note : ne pas citer le nom exact de l'institution
 
 Réponds UNIQUEMENT en JSON valide :
 {
-  "description": "Description professionnelle de 3-4 phrases, sobre et institutionnelle, mettant en valeur la qualité du partenariat sans nommer l'institution."
+  "description": "Description de 3-4 phrases sobre et institutionnelle sans nommer l'institution."
 }`
-          }]
         })
       })
       const data = await response.json()
@@ -780,7 +767,7 @@ Réponds UNIQUEMENT en JSON valide :
             <Textarea label="Description publique (sans nommer l'institution)" value={editing.description||''} onChange={v => setEditing(p=>({...p,description:v}))} rows={4} placeholder="Description professionnelle visible sur le site..." />
             <button onClick={generatePartnerAI} disabled={aiLoading}
               style={{ position:'absolute', top:4, right:0, background:'linear-gradient(135deg,#1A1A1A,#1B3E6F)', color:'#C8A84B', border:'none', borderRadius:7, padding:'5px 12px', fontSize:11, fontWeight:700, cursor:'pointer' }}>
-              {aiLoading ? '⏳...' : "✨ Générer avec l'IA"}
+              {aiLoading ? '⏳...' : '✨ Générer avec l'IA'}
             </button>
           </div>
           <div style={{ display:'flex', gap:10, justifyContent:'flex-end' }}>
