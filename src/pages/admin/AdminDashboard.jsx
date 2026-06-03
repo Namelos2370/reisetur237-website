@@ -204,29 +204,42 @@ export default function AdminDashboard() {
 
   async function saveExam() {
     setSaving(true)
-    const data = { title: editing.title, level: editing.level, date: editing.date, location: editing.location, capacity: editing.capacity, price: editing.price, status: editing.status || 'Ouvert' }
-    if (editing.id) await supabase.from('exam_sessions').update(data).eq('id', editing.id)
-    else             await supabase.from('exam_sessions').insert(data)
-    setSaving(false); setModal(null); setEditing(null); fetchAll()
+    try {
+      const data = { title: editing.title, level: editing.level, date: editing.date, location: editing.location, capacity: editing.capacity, price: editing.price, status: editing.status || 'Ouvert' }
+      const { error } = editing.id
+        ? await supabase.from('exam_sessions').update(data).eq('id', editing.id)
+        : await supabase.from('exam_sessions').insert(data)
+      if (error) throw error
+      setModal(null); setEditing(null); fetchAll()
+    } catch(e) { alert('Erreur examen: ' + e.message) }
+    finally { setSaving(false) }
   }
 
   async function saveVisa() {
     setSaving(true)
-    const data = { candidate_id: editing.candidate_id, destination: editing.destination, step: editing.step || 'depot', notes: editing.notes, archived: false }
-    if (editing.id) await supabase.from('visa_dossiers').update(data).eq('id', editing.id)
-    else             await supabase.from('visa_dossiers').insert(data)
-    setSaving(false); setModal(null); setEditing(null); fetchAll()
+    try {
+      const data = { candidate_id: editing.candidate_id, destination: editing.destination, step: editing.step || 'depot', notes: editing.notes, archived: false }
+      const { error } = editing.id
+        ? await supabase.from('visa_dossiers').update(data).eq('id', editing.id)
+        : await supabase.from('visa_dossiers').insert(data)
+      if (error) throw error
+      setModal(null); setEditing(null); fetchAll()
+    } catch(e) { alert('Erreur visa: ' + e.message) }
+    finally { setSaving(false) }
   }
 
   async function saveTeamMember() {
     setSaving(true)
     try {
-      const { data, error } = await supabase.auth.admin.createUser({
+      const { data, error } = await supabase.auth.signUp({
         email: editing.email, password: editing.password,
-        user_metadata: { full_name: editing.full_name },
+        options: { data: { full_name: editing.full_name } }
       })
       if (error) throw error
-      await supabase.from('profiles').upsert({ id: data.user.id, full_name: editing.full_name, email: editing.email, role: editing.role, phone: editing.phone })
+      if (data.user) {
+        await supabase.from('profiles').upsert({ id: data.user.id, full_name: editing.full_name, email: editing.email, role: editing.role, phone: editing.phone })
+      }
+      alert('Compte créé ! L\'utilisateur doit confirmer son email.')
       setModal(null); setEditing(null); fetchAll()
     } catch(e) {
       alert('Erreur : ' + e.message)
@@ -397,6 +410,7 @@ export default function AdminDashboard() {
                       <td style={{ padding:'11px 14px', display:'flex', gap:6 }}>
                         <Btn small onClick={() => updateDocStatus(d.id,'Validé')} color="#10B981">✓ Valider</Btn>
                         <Btn small onClick={() => updateDocStatus(d.id,'Rejeté')} color="#EF4444">✗ Rejeter</Btn>
+                        <Btn small onClick={() => deleteItem('documents',d.id)} color="#64748B"><Trash2 size={12}/></Btn>
                       </td>
                     </tr>
                   ))}
