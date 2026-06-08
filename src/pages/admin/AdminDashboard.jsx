@@ -202,7 +202,7 @@ Réponds UNIQUEMENT en JSON valide sans texte avant ou après :
         })
       })
       const data = await response.json()
-      if (data.error) throw new Error(data.error)Variables.')
+        if (data.error) throw new Error(data.error)
       const text = data.content?.[0]?.text || ''
       if (!text) throw new Error('Réponse vide de Claude. Vérifiez la clé API.')
       const clean = text.replace(/```json|```/g, '').trim()
