@@ -1,7 +1,7 @@
 export default function WhatsAppButton() {
   const phone = '237620107489'
   const message = encodeURIComponent(
-    'Bonjour Reisetür 237 👋 Je souhaite avoir des informations sur vos services de mobilité internationale et vos cours d\'allemand.'
+    "Bonjour Reisetür 237 👋 Je souhaite avoir des informations sur vos services de mobilité internationale et vos cours d'allemand."
   )
   const url = `https://wa.me/${phone}?text=${message}`
   return (
@@ -34,3 +34,9 @@ export default function WhatsAppButton() {
     </a>
   )
 }
+Commit changes
+Attention cette fois — avant de cliquer Commit, vérifie visuellement que la ligne 8 commence bien par     <a avec le chevron <.
+
+
+
+Écrire un message…
