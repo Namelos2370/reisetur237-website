@@ -468,4 +468,4 @@ Chaque mois de retard est un mois de moins vers votre avenir en Allemagne. La pr
     id:'10', image:'https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=700&q=80',
     slug:'visa-travail-qualifie-fachkrafte',
     title_fr:"Visa Travail Qualifié (Fachkräfteeinwanderung) : La voie directe vers l'emploi en Allemagne",
-    title_en:"Skilled Worker Visa: The Direct Path to Employment in
+    title_en:'Skilled Worker Visa: The Direct Path to Employment in Germany',
