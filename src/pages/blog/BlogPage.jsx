@@ -21,49 +21,46 @@ export const ALL_ARTICLES = [
 
 L'**Ausbildung Pflege** est un programme de formation professionnelle en soins infirmiers en Allemagne, d'une durée de **3 ans**. Il permet d'obtenir un diplôme reconnu dans toute l'Union Européenne et d'accéder à un emploi stable, bien rémunéré et en forte demande.
 
-L'Allemagne compte aujourd'hui plus de **300 000 postes non pourvus** dans le secteur médical. Les candidats formés via l'Ausbildung bénéficient d'un accès privilégié à ce marché de l'emploi européen.
+L'Allemagne compte aujourd'hui plus de **300 000 postes non pourvus** dans le secteur médical.
 
 ## Conditions d'accès depuis le Cameroun
-
-Pour postuler à une Ausbildung Pflege depuis le Cameroun, vous devez réunir les éléments suivants :
 
 - **Niveau de langue** : Minimum B2 en allemand (certifié)
 - **Diplôme** : Baccalauréat ou équivalent reconnu
 - **Âge** : Généralement entre 18 et 35 ans
-- **Bonne condition physique** : Les soins infirmiers sont un métier exigeant physiquement et mentalement
+- **Bonne condition physique** : Les soins infirmiers sont exigeants physiquement et mentalement
 
 ## Les étapes du processus avec Reisetür 237
 
-### 1. Formation linguistique (12 mois)
-Commencez votre parcours chez Reisetür 237 au niveau A1. Avec nos formateurs certifiés, progressez jusqu'au B2 en 12 mois. C'est la clé de tout le reste.
+### 1. Formation linguistique
+Commencez au niveau A1 chez Reisetür 237. Progressez jusqu'au B2 en 8 mois avec nos formateurs certifiés.
 
 ### 2. Constitution du dossier
-- CV en allemand (Lebenslauf au format européen)
+- CV en allemand (Lebenslauf)
 - Lettre de motivation (Motivationsschreiben)
 - Diplômes traduits et apostillés
 - Casier judiciaire vierge
-- Photos d'identité conformes
 
 ### 3. Candidature auprès des établissements
-Reisetür 237 vous met en relation directe avec nos institutions partenaires en Allemagne. Nous soumettons votre dossier et assurons le suivi des candidatures.
+Reisetür 237 vous met en relation avec nos institutions partenaires en Allemagne.
 
 ### 4. Obtention du visa national (Visa D)
-Une fois votre contrat d'Ausbildung signé, nous vous accompagnons pour obtenir votre visa national de long séjour auprès de l'ambassade d'Allemagne à Yaoundé.
+Une fois votre contrat d'Ausbildung signé, nous vous accompagnons pour le visa.
 
 ### 5. Départ et intégration
-Avant votre départ, nous vous orientons pour le logement, l'assurance santé internationale et les premières démarches administratives à votre arrivée.
+Orientation pour le logement, l'assurance santé et les premières démarches administratives.
 
 ## Avantages de l'Ausbildung Pflege
 
-- **Rémunération dès le premier jour** : entre 800 et 1 200 €/mois pendant la formation
-- **Logement** : souvent pris en charge ou subventionné par l'établissement
+- **Rémunération dès le premier jour** : entre 800 et 1 200 €/mois
+- **Logement** : souvent pris en charge par l'établissement
 - **Titre de séjour** : renouvelable, évolutif vers une résidence permanente
-- **Famille** : possibilité de regroupement familial après 2 ans
+- **Famille** : regroupement familial possible après 2 ans
 - **Diplôme européen** : reconnu dans toute l'UE
 
 ## Témoignage
 
-*"J'ai commencé les cours d'allemand chez Reisetür 237 en ne connaissant pas un seul mot. 14 mois plus tard, j'étais à Berlin avec mon contrat d'Ausbildung en main. Tout s'est passé exactement comme ils me l'avaient expliqué."*
+*"J'ai commencé les cours d'allemand chez Reisetür 237 en ne connaissant pas un seul mot. 14 mois plus tard, j'étais à Berlin avec mon contrat d'Ausbildung en main."*
 — **Marie-Noëlle F.**, infirmière en formation, Berlin
 
 ---
@@ -81,34 +78,28 @@ Vous souhaitez démarrer votre parcours Ausbildung ? Contactez Reisetür 237 dè
     category:'Visa', created_at:'2026-05-10T10:00:00Z', read_time:6,
     content_fr:`## Le visa national allemand (Type D)
 
-Pour étudier ou effectuer une Ausbildung en Allemagne, les ressortissants camerounais ont besoin d'un **visa national de long séjour (Type D)**, délivré par l'Ambassade d'Allemagne à Yaoundé.
+Pour étudier en Allemagne, les ressortissants camerounais ont besoin d'un **visa national de long séjour (Type D)**, délivré par l'Ambassade d'Allemagne à Yaoundé.
 
-## Liste complète des documents requis
+## Documents requis
 
 ### Documents personnels
-- Passeport valide (validité minimum 6 mois après la fin du séjour prévu)
-- 2 photos d'identité biométriques récentes (35x45mm, fond blanc)
-- Acte de naissance (original + traduction officielle en allemand)
+- Passeport valide (min. 6 mois après la fin du séjour)
+- 2 photos biométriques (35x45mm, fond blanc)
+- Acte de naissance + traduction officielle en allemand
 - Casier judiciaire n°3 (moins de 3 mois)
 
 ### Documents académiques
-- Diplômes originaux + copies certifiées conformes
-- Traductions officielles en allemand (traducteur assermenté)
+- Diplômes originaux + traductions assermentées
 - Relevés de notes des 3 dernières années
 
-### Documents linguistiques
-- Certificat de langue allemande niveau B2 minimum
-- Pour l'Ausbildung Pflege : B2 requis
-
 ### Documents financiers
-- Justificatif de ressources : **10 236 € bloqués** sur un compte de blocage allemand (Sperrkonto) OU
-- Lettre de prise en charge (Verpflichtungserklärung) d'un répondant en Allemagne OU
+- **10 332 €** sur un Sperrkonto (Fintiba, Expatrio, Deutsche Bank) OU
+- Verpflichtungserklärung d'un répondant en Allemagne OU
 - Contrat d'Ausbildung mentionnant la rémunération
 
 ### Documents d'admission
 - Lettre d'admission de l'université ou contrat d'Ausbildung signé
-- Preuve d'assurance santé internationale valable en Allemagne (ex. Care Concept AG)
-- Justificatif de logement (si disponible)
+- Assurance santé valable en Allemagne
 
 ## Délais à prévoir
 
@@ -116,14 +107,9 @@ Pour étudier ou effectuer une Ausbildung en Allemagne, les ressortissants camer
 |-------|-------------|
 | Prise de rendez-vous consulaire | 4 à 8 semaines |
 | Traitement du dossier | 6 à 12 semaines |
-| Total à prévoir | **3 à 5 mois avant le départ** |
+| **Total** | **3 à 5 mois avant le départ** |
 
-## Conseils de Reisetür 237
-
-1. **Commencez tôt** — Ne sous-estimez jamais les délais consulaires
-2. **Vérifiez les traductions** — Seuls les traducteurs assermentés sont acceptés
-3. **Le Sperrkonto** — Ouvrez le compte de blocage dès que possible (Deutsche Bank, Fintiba, Expatrio)
-4. **Préparez l'entretien** — L'ambassade peut vous convoquer pour un entretien
+---
 
 Reisetür 237 vérifie et constitue votre dossier complet pour maximiser vos chances.`,
   },
@@ -133,38 +119,34 @@ Reisetür 237 vérifie et constitue votre dossier complet pour maximiser vos cha
     title_fr:"Témoignage : Marie-Noëlle, infirmière à Berlin grâce à Reisetür 237",
     title_de:"Erfahrungsbericht: Marie-Noëlle, Krankenschwester in Berlin",
     title_en:"Testimonial: Marie-Noëlle, nurse in Berlin thanks to Reisetür 237",
-    excerpt_fr:"\"Je suis partie de Yaoundé avec zéro expérience en allemand. Aujourd'hui je travaille dans une clinique à Berlin.\" — Marie-Noëlle, 2 ans d'Ausbildung.",
+    excerpt_fr:"\"Je suis partie de Yaoundé avec zéro expérience en allemand. Aujourd'hui je travaille dans une clinique à Berlin.\"",
     excerpt_en:"\"I left Yaoundé with zero German experience. Today I work in a Berlin clinic.\"",
     category:'Témoignages', created_at:'2026-05-05T10:00:00Z', read_time:4,
     content_fr:`## Une aventure qui a commencé ici, à Yaoundé
 
-*Marie-Noëlle F., 26 ans, originaire de Yaoundé, est aujourd'hui en 2ème année d'Ausbildung Pflege dans une clinique berlinoise. Voici son témoignage.*
+*Marie-Noëlle F., 26 ans, est aujourd'hui en 2ème année d'Ausbildung Pflege dans une clinique berlinoise.*
 
 ---
 
 **Comment avez-vous connu Reisetür 237 ?**
 
-"C'est une amie qui m'en a parlé. J'avais envie de partir mais je ne savais pas par où commencer. Je n'avais aucune base en allemand, et honnêtement, ça me semblait impossible. En venant ici, on m'a expliqué le parcours étape par étape. Ça m'a donné confiance."
+"Je n'avais aucune base en allemand et ça me semblait impossible. En venant ici, on m'a expliqué le parcours étape par étape. Ça m'a donné confiance."
 
 **Comment s'est passée la formation linguistique ?**
 
-"J'ai suivi les cours du niveau A1 au B2 chez Reisetür 237. Ça a duré environ 14 mois. Les formateurs sont très bons, ils connaissent les exigences des examens et ce que les employeurs allemands attendent. Le niveau B2, je l'ai obtenu du premier coup."
+"J'ai suivi les cours du A1 au B2 chez Reisetür 237. Les formateurs sont très bons. Le niveau B2, je l'ai obtenu du premier coup."
 
 **Et la constitution du dossier ?**
 
-"C'est là où Reisetür 237 fait vraiment la différence. Mon CV en allemand, ma lettre de motivation, les traductions des diplômes — tout a été fait avec eux. Ils ont même préparé mon entretien simulé pour l'ambassade. Je savais exactement quoi dire."
-
-**Comment était l'accueil en Allemagne ?**
-
-"Ma clinique m'a aidée pour le logement. Les premiers mois, c'est intense — la langue dans un contexte professionnel médical, c'est différent des cours. Mais j'étais bien préparée. Aujourd'hui je suis à l'aise, mes collègues sont bienveillants."
+"Mon CV en allemand, ma lettre de motivation, les traductions — tout a été fait avec eux. Ils ont même préparé mon entretien simulé pour l'ambassade."
 
 **Votre message pour ceux qui hésitent ?**
 
-"Ne dites pas que c'est impossible. Moi j'ai commencé à zéro. Si vous êtes prêt à travailler, Reisetür 237 vous donne tous les outils. Ce n'est pas un rêve, c'est un parcours. Et ça vaut vraiment le coup."
+"Ne dites pas que c'est impossible. Moi j'ai commencé à zéro. Si vous êtes prêt à travailler, Reisetür 237 vous donne tous les outils."
 
 ---
 
-*Marie-Noëlle est l'une des candidates dont Reisetür 237 a accompagné le dossier de A à Z, de la première leçon d'allemand jusqu'à son installation à Berlin.*`,
+*Marie-Noëlle est l'une des candidates dont Reisetür 237 a accompagné le dossier de A à Z.*`,
   },
   {
     id:'4', image:'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=700&q=80',
@@ -172,30 +154,23 @@ Reisetür 237 vérifie et constitue votre dossier complet pour maximiser vos cha
     title_fr:"Ils sont partis ensemble : 3 candidats, une même école à Berlin",
     title_de:"Sie gingen zusammen: 3 Kandidaten, eine Schule in Berlin",
     title_en:"They left together: 3 candidates, one school in Berlin",
-    excerpt_fr:"Jean-Paul, Honorine et Leslie ont suivi le même parcours chez Reisetür 237 et se retrouvent aujourd'hui dans la même école de formation à Berlin.",
-    excerpt_en:"Jean-Paul, Honorine and Leslie followed the same path at Reisetür 237 and are now in the same training school in Berlin.",
+    excerpt_fr:"Jean-Paul, Honorine et Leslie ont suivi le même parcours chez Reisetür 237 et se retrouvent aujourd'hui dans la même école à Berlin.",
+    excerpt_en:"Jean-Paul, Honorine and Leslie followed the same path at Reisetür 237.",
     category:'Témoignages', created_at:'2026-04-25T10:00:00Z', read_time:5,
     content_fr:`## Trois amis, un même rêve, un même départ
 
-*Jean-Paul N., Honorine T. et Leslie M. se sont connus lors de leurs cours d'allemand chez Reisetür 237. Aujourd'hui en 1ère année d'Ausbildung Pflege dans la même clinique de Berlin, ils partagent leur expérience.*
-
----
-
 ### Jean-Paul, 27 ans
-
-"Au départ, je voulais partir seul. Mais le fait de se retrouver à plusieurs, ça aide vraiment. On se motivait mutuellement pendant les cours, on révisait ensemble. Et maintenant qu'on est à Berlin dans la même structure, c'est un confort énorme. On se retrouve le week-end, on parle en français quand on est fatigués des cours. C'est important d'avoir des repères."
+"Le fait de se retrouver à plusieurs ça aide vraiment. On se motivait mutuellement pendant les cours. Maintenant à Berlin dans la même structure, c'est un confort énorme."
 
 ### Honorine, 24 ans
-
-"Ce que j'apprécie le plus c'est que Reisetür 237 nous a préparés à la réalité, pas à une image idéalisée. On nous a dit que les premiers mois seraient difficiles, que la langue médicale était exigeante, qu'il faudrait s'adapter. Et c'est vrai. Mais parce qu'on était préparés, on n'a pas paniqué. Ma clinique est très structurée, les formateurs sont patients."
+"Reisetür 237 nous a préparés à la réalité, pas à une image idéalisée. On nous a dit que les premiers mois seraient difficiles. Parce qu'on était préparés, on n'a pas paniqué."
 
 ### Leslie, 25 ans
-
-"Moi ce qui m'a convaincu, c'est quand j'ai vu que Reisetür 237 suivait les dossiers jusqu'au bout. Pas juste les cours de langue. Ils ont géré mon dossier consulaire, mon assurance, mon contrat. Je n'avais jamais quitté le Cameroun. Ils m'ont accompagné pas à pas. Aujourd'hui j'ai un salaire, un logement, et une perspective d'avenir en Europe."
+"Reisetür 237 suivait les dossiers jusqu'au bout. Ils ont géré mon dossier consulaire, mon assurance, mon contrat. Aujourd'hui j'ai un salaire, un logement, et une perspective d'avenir en Europe."
 
 ---
 
-*Jean-Paul, Honorine et Leslie font partie de la même promotion Reisetür 237. Leur départ coordonné a été organisé avec leur école partenaire à Berlin.*`,
+*Jean-Paul, Honorine et Leslie font partie de la même promotion Reisetür 237.*`,
   },
   {
     id:'5', image:'https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=700&q=80',
@@ -203,32 +178,22 @@ Reisetür 237 vérifie et constitue votre dossier complet pour maximiser vos cha
     title_fr:"Deux parcours différents, deux réussites : Yvan et Valerie",
     title_de:"Zwei verschiedene Wege, zwei Erfolge: Yvan und Valerie",
     title_en:"Two different paths, two successes: Yvan and Valerie",
-    excerpt_fr:"Yvan est en Ausbildung dans une maison de retraite à Hambourg. Valerie suit une formation en hôtellerie à Malte. Deux profils, deux destinations, une même agence.",
-    excerpt_en:"Yvan is in an Ausbildung at a Hamburg nursing home. Valerie is studying hospitality in Malta. Two profiles, two destinations, one agency.",
+    excerpt_fr:"Yvan est en Ausbildung à Hambourg. Valerie suit une formation en hôtellerie à Malte. Deux profils, une même agence.",
+    excerpt_en:"Yvan is in Hamburg. Valerie is studying hospitality in Malta. Two profiles, one agency.",
     category:'Témoignages', created_at:'2026-04-15T10:00:00Z', read_time:5,
     content_fr:`## Deux chemins, une même confiance
 
-### Yvan, Hambourg — Ausbildung Pflege (1 an)
-
-*Yvan N., 28 ans, est en 1ère année d'Ausbildung dans un établissement de soins pour personnes âgées à Hambourg.*
-
-"J'avais hésité longtemps entre rester au Cameroun et partir. Ce qui m'a décidé, c'est la clarté du parcours que Reisetür 237 m'a présenté. Pas de promesses vagues — juste : voilà ce que vous devez faire, voilà combien de temps ça prend, voilà ce que vous allez gagner.
-
-Hambourg, c'est une ville magnifique. Mon Heim (centre de soins) est bien organisé. Je gagne environ 1 050 € par mois en formation. C'est plus que je ne gagnais au Cameroun, et j'apprends en même temps. Dans 2 ans, j'aurai un diplôme reconnu partout en Europe."
+### Yvan, Hambourg — Ausbildung Pflege
+"Ce qui m'a décidé c'est la clarté du parcours. Pas de promesses vagues. Je gagne environ 1 050 €/mois en formation. Dans 2 ans j'aurai un diplôme reconnu partout en Europe."
 
 ---
 
-### Valerie, Malte — Formation en Hôtellerie (1 an)
-
-*Valerie K., 23 ans, étudie à Domain Academy à Mosta, Malte, en programme anglophone de gestion hôtelière.*
-
-"Mon anglais était déjà bon, donc Malte était le choix logique. Reisetür 237 m'a orientée vers Domain Academy — je ne connaissais pas Malte du tout. Ils ont tout géré : l'admission, le visa, le logement en résidence étudiante.
-
-Malte c'est petit mais dynamique. Il y a beaucoup d'étudiants internationaux, l'ambiance est cosmopolite. Mon programme est en anglais, les profs sont accessibles. Après cette formation, je veux travailler dans l'hôtellerie de luxe en Europe."
+### Valerie, Malte — Formation en Hôtellerie
+"Reisetür 237 m'a orientée vers Domain Academy. Ils ont tout géré : l'admission, le visa, le logement. Après cette formation je veux travailler dans l'hôtellerie de luxe en Europe."
 
 ---
 
-*Yvan et Valerie illustrent la diversité des destinations et des parcours que Reisetür 237 accompagne, de l'Allemagne à Malte, selon le profil et les ambitions de chaque candidat.*`,
+*Yvan et Valerie illustrent la diversité des destinations que Reisetür 237 accompagne.*`,
   },
   {
     id:'6', image:'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=700&q=80',
@@ -236,143 +201,271 @@ Malte c'est petit mais dynamique. Il y a beaucoup d'étudiants internationaux, l
     title_fr:"Étudier à Malte : l'option anglophone abordable en Europe",
     title_de:"Studieren auf Malta: die erschwingliche englischsprachige Option",
     title_en:"Study in Malta: the affordable English-language option in Europe",
-    excerpt_fr:"Malte attire de plus en plus d'étudiants africains grâce à ses programmes anglophones, son coût de vie modéré et sa situation géographique stratégique.",
-    excerpt_en:"Malta is attracting more and more African students thanks to its English programs and moderate cost of living.",
+    excerpt_fr:"Malte attire de plus en plus d'étudiants africains grâce à ses programmes anglophones et son coût de vie modéré.",
+    excerpt_en:"Malta is attracting more African students thanks to its English programs.",
     category:'Migration', created_at:'2026-04-08T10:00:00Z', read_time:5,
     content_fr:`## Pourquoi Malte ?
 
-Malte est souvent sous-estimée comme destination d'études. Pourtant, cette île méditerranéenne membre de l'Union Européenne présente des atouts considérables pour les étudiants africains.
+Malte est membre de l'UE, pays anglophone, avec des programmes universitaires reconnus à coût modéré.
 
-## Les avantages de Malte
+## Les avantages
 
-### Langue anglaise
-Malte est l'un des deux seuls pays de l'UE où l'anglais est langue officielle. Tous les programmes universitaires sont dispensés en anglais — un avantage majeur pour les candidats francophones qui maîtrisent déjà l'anglais.
-
-### Coût de vie modéré
-Comparé à l'Allemagne, la France ou les Pays-Bas, Malte offre un coût de vie plus accessible, avec des loyers étudiants entre 400 et 700 €/mois selon la ville.
-
-### Reconnaissance européenne
-Les diplômes maltais sont reconnus dans toute l'Union Européenne. Étudier à Malte, c'est obtenir un titre universitaire européen.
-
-### Cadre de vie
-Malte bénéficie d'un climat méditerranéen exceptionnel, d'une communauté internationale importante et d'une sécurité exemplaire.
+- **Langue anglaise** : tous les programmes en anglais
+- **Coût modéré** : loyers entre 400 et 700 €/mois
+- **Diplôme européen** reconnu dans toute l'UE
+- **Cadre de vie** méditerranéen exceptionnel
 
 ## Notre partenaire : Domain Academy
 
-Reisetür 237 travaille en partenariat avec **Domain Academy**, établissement d'enseignement supérieur basé à Mosta, proposant des programmes en :
-- Gestion hôtelière et tourisme
-- Business Administration
-- Technologies de l'information
-- Programmes préparatoires
+Reisetür 237 travaille avec **Domain Academy** à Mosta : gestion hôtelière, Business Administration, IT.
 
-## Conditions générales
+## Conditions
 
-- **Langue** : Anglais niveau B2 minimum
-- **Diplôme** : Baccalauréat ou équivalent
-- **Visa** : Visa étudiant maltais (simplifié pour les pays tiers)
-- **Durée** : 1 à 3 ans selon le programme
+- Anglais B2 minimum
+- Baccalauréat ou équivalent
+- Durée : 1 à 3 ans selon le programme
 
-Intéressé par Malte ? Contactez Reisetür 237 pour une évaluation gratuite de votre profil.`,
+---
+
+Intéressé par Malte ? Contactez Reisetür 237 pour une évaluation gratuite.`,
   },
-]
+  {
+    id:'7', image:'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=700&q=80',
+    slug:'visa-etudiant-allemagne-complet',
+    title_fr:"Visa Étudiant Allemagne : Guide complet pour les Camerounais",
+    title_en:"Germany Student Visa: Complete Guide for Cameroonians",
+    excerpt_fr:"Tout savoir sur le visa étudiant allemand : conditions, documents, Sperrkonto, délais et erreurs à éviter — expliqué étape par étape.",
+    excerpt_en:"Everything about the German student visa: conditions, documents, deadlines and mistakes to avoid.",
+    category:'Visa', created_at:'2026-06-01T10:00:00Z', read_time:7,
+    content_fr:`## Qu'est-ce que le Visa Étudiant Allemagne ?
 
-const CATS = { fr: ['Tous','Formation','Visa','Témoignages','Migration'], de: ['Alle','Ausbildung','Visum','Erfahrungsberichte','Migration'], en: ['All','Training','Visa','Testimonials','Migration'] }
-const ICONS = { 'Formation':'🎓','Visa':'📋','Témoignages':'💬','Migration':'✈️','Actualités':'📰','Ausbildung':'🎓','Erfahrungsberichte':'💬','Training':'🎓','Testimonials':'💬','News':'📰' }
-const CAT_COLORS = { 'Formation':{ bg:'#D1FAE5',c:'#059669' },'Visa':{ bg:'#FEE2E2',c:'#DC2626' },'Témoignages':{ bg:'#FEF3C7',c:'#D97706' },'Migration':{ bg:'#DBEAFE',c:'#1D4ED8' } }
+Le visa étudiant allemand, aussi appelé **Visa National Type D**, est indispensable pour tout Camerounais souhaitant poursuivre des études supérieures en Allemagne. Il est délivré par l'Ambassade d'Allemagne à Yaoundé.
 
-export default function BlogPage() {
-  const { i18n } = useTranslation()
-  const lang = i18n.language?.slice(0,2) || 'fr'
-  const [articles, setArticles] = useState(ALL_ARTICLES)
-  const [search, setSearch] = useState('')
-  const [cat, setCat] = useState('Tous')
+## Qui est concerné ?
 
-  useEffect(() => {
-    supabase.from('articles').select('*').eq('published',true).order('created_at',{ascending:false})
-      .then(({ data }) => {
-        if (data?.length > 0) {
-          // Fusionner articles statiques + Supabase, sans doublons
-          const supabaseIds = data.map(a => a.slug)
-          const staticFiltered = ALL_ARTICLES.filter(a => !supabaseIds.includes(a.slug))
-          setArticles([...data, ...staticFiltered])
-        }
-      })
-  }, [])
+- Intégrer une université publique ou privée en Allemagne
+- Suivre une formation préparatoire (Studienkolleg)
+- Effectuer un stage longue durée dans le cadre d'études
 
-  const getTitle   = a => a[`title_${lang}`]   || a.title_fr   || ''
-  const getExcerpt = a => a[`excerpt_${lang}`] || a.excerpt_fr || ''
-  const cats = CATS[lang] || CATS.fr
+## Conditions d'éligibilité
 
-  const filtered = articles.filter(a => {
-    const matchCat = cat === 'Tous' || cat === 'Alle' || cat === 'All' || a.category === cat
-    const matchS = getTitle(a).toLowerCase().includes(search.toLowerCase())
-    return matchCat && matchS
-  })
+### Académiques
+- Baccalauréat reconnu par les autorités allemandes (via anabin)
+- Lettre d'admission officielle d'une université allemande
+- Relevés de notes des 3 dernières années
 
-  const L = {
-    fr: { badge:'Blog', title:'Blog & Actualités', sub:'Informations, guides et témoignages', search:'Rechercher...', readMore:'Lire la suite', readTime:'min de lecture', none:'Aucun article trouvé.' },
-    de: { badge:'Blog', title:'Blog & Neuigkeiten', sub:'Informationen, Ratgeber und Erfahrungsberichte', search:'Suchen...', readMore:'Weiterlesen', readTime:'Min. Lesezeit', none:'Keine Artikel gefunden.' },
-    en: { badge:'Blog', title:'Blog & News', sub:'Information, guides and testimonials', search:'Search...', readMore:'Read more', readTime:'min read', none:'No articles found.' },
-  }[lang] || { badge:'Blog', title:'Blog & Actualités', sub:'', search:'Rechercher...', readMore:'Lire la suite', readTime:'min', none:'Aucun article.' }
+### Linguistiques
+- Allemand **B2 minimum** pour les programmes en allemand
+- Anglais **B2** pour les programmes anglophones
+- Certificat reconnu : Goethe-Institut, telc, ÖSD ou ECL
 
-  return (
-    <>
-      <SEOHead />
-      <div style={{ paddingTop:62, fontFamily:"'DM Sans',sans-serif" }}>
-        <div style={{ background:`linear-gradient(135deg,${NAVY},#1B3E6F)`, padding:'64px 32px 56px', textAlign:'center', position:'relative', overflow:'hidden' }}>
-          <div style={{ position:'absolute', inset:0, opacity:.04, backgroundImage:'linear-gradient(rgba(255,255,255,.6)1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.6)1px,transparent 1px)', backgroundSize:'50px 50px' }}/>
-          <p style={{ color:GOLD, fontSize:12, fontWeight:700, textTransform:'uppercase', letterSpacing:'.18em', marginBottom:12 }}>{L.badge}</p>
-          <h1 style={{ fontFamily:"'Playfair Display',serif", fontSize:'clamp(28px,5vw,46px)', fontWeight:700, color:'#fff', marginBottom:14 }}>{L.title}</h1>
-          <div style={{ width:48, height:4, background:GOLD, borderRadius:2, margin:'0 auto 18px' }}/>
-          <p style={{ color:'rgba(255,255,255,0.6)', fontSize:17 }}>{L.sub}</p>
-        </div>
+### Financières
 
-        <div style={{ maxWidth:1100, margin:'0 auto', padding:'48px 28px' }}>
-          <div style={{ display:'flex', gap:12, marginBottom:28, flexWrap:'wrap', alignItems:'center' }}>
-            <div style={{ display:'flex', alignItems:'center', gap:8, background:'#fff', border:'1.5px solid #E2E8F0', borderRadius:12, padding:'9px 16px', flex:1, minWidth:200 }}>
-              <Search size={14} color="#94A3B8" />
-              <input value={search} onChange={e=>setSearch(e.target.value)} placeholder={L.search} style={{ border:'none', outline:'none', fontSize:14, flex:1 }} />
-            </div>
-            <div style={{ display:'flex', gap:8, flexWrap:'wrap' }}>
-              {cats.map(c => (
-                <button key={c} onClick={()=>setCat(c)} style={{ background:cat===c?NAVY:'#fff', color:cat===c?'#fff':'#64748B', border:'1.5px solid #E2E8F0', borderRadius:9, padding:'8px 14px', fontSize:12.5, fontWeight:600, cursor:'pointer' }}>{c}</button>
-              ))}
-            </div>
-          </div>
+**Option 1 — Sperrkonto**
+Bloquer **10 332 €** sur un compte allemand agréé (Fintiba, Expatrio, Deutsche Bank). Déblocage progressif : **861 €/mois**.
 
-          {filtered.length === 0
-            ? <div style={{ textAlign:'center', padding:'64px 0', color:'#94A3B8' }}><BookOpen size={40} style={{ marginBottom:12, opacity:.4 }}/><p>{L.none}</p></div>
-            : <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fill,minmax(310px,1fr))', gap:22 }}>
-                {filtered.map((a,i) => {
-                  const cs = CAT_COLORS[a.category] || { bg:'#F1F5FB', c:'#64748B' }
-                  return (
-                    <Link key={a.id} to={`/blog/${a.slug||a.id}`} style={{ textDecoration:'none' }}>
-                      <div style={{ background:'#fff', borderRadius:18, overflow:'hidden', boxShadow:'0 2px 16px rgba(0,0,0,0.07)', border:'1.5px solid #F1F5FB', height:'100%', display:'flex', flexDirection:'column' }}>
-                        <div style={{ position:'relative', height:180, overflow:'hidden' }}>
-                          {a.image ? <img src={a.image} alt={getTitle(a)} style={{ width:'100%', height:'100%', objectFit:'cover' }} loading='lazy'/> : <div style={{ height:'100%', background:i%3===0?`linear-gradient(135deg,${NAVY},#2a0707)`:i%3===1?`linear-gradient(135deg,#1B3E6F,#2563A8)`:`linear-gradient(135deg,${NAVY},${RED})` }}/>}
-                          <div style={{ position:'absolute', inset:0, background:'linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.6))' }}/>
-                          <span style={{ position:'absolute', top:12, left:12, background:'rgba(255,255,255,0.15)', color:'#fff', fontSize:11, fontWeight:700, padding:'4px 10px', borderRadius:999 }}>{a.category}</span>
-                          <span style={{ position:'absolute', bottom:12, left:12, fontSize:22 }}>{ICONS[a.category]||'📰'}</span>
-                        </div>
-                        <div style={{ padding:"18px 20px", flex:1, display:"flex", flexDirection:"column" }}>
-                          <h3 style={{ fontFamily:"'Playfair Display',serif", fontSize:15.5, fontWeight:700, color:NAVY, lineHeight:1.4, marginBottom:10, flex:1 }}>{getTitle(a)}</h3>
-                          <p style={{ color:'#64748B', fontSize:13, lineHeight:1.65, marginBottom:14 }}>{(getExcerpt(a)||'').slice(0,110)}...</p>
-                          <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', borderTop:'1px solid #F1F5FB', paddingTop:10 }}>
-                            <span style={{ display:'flex', alignItems:'center', gap:5, color:'#94A3B8', fontSize:11.5 }}>
-                              <Calendar size={11} />{new Date(a.created_at).toLocaleDateString(lang==='fr'?'fr-FR':lang==='de'?'de-DE':'en-GB')}
-                              {a.read_time && <span style={{ marginLeft:6 }}>· {a.read_time} {L.readTime}</span>}
-                            </span>
-                            <span style={{ color:RED, fontSize:12.5, fontWeight:700, display:'flex', alignItems:'center', gap:3 }}>{L.readMore} <ChevronRight size={12}/></span>
-                          </div>
-                        </div>
-                      </div>
-                    </Link>
-                  )
-                })}
-              </div>
-          }
-        </div>
-      </div>
-    </>
-  )
-}
+**Option 2 — Verpflichtungserklärung**
+Un répondant en Allemagne s'engage à couvrir vos frais. Document notarié obligatoire.
+
+## Documents à fournir
+
+### Personnels
+- Passeport biométrique valide (min. 6 mois après le séjour)
+- 2 photos biométriques (35x45mm, fond blanc)
+- Acte de naissance + traduction certifiée en allemand
+- Casier judiciaire n°3 de moins de 3 mois
+
+### Académiques
+- Lettre d'admission originale
+- Baccalauréat + traduction assermentée
+- Relevés de notes + traductions
+
+### Financiers
+- Attestation Sperrkonto OU Verpflichtungserklärung
+- Attestation d'assurance santé valable en Allemagne
+
+### Complémentaires
+- Justificatif de logement (si disponible)
+- Formulaire de visa rempli en ligne
+- Reçu de paiement des frais consulaires (75 €)
+
+## Délais à prévoir
+
+| Étape | Durée estimée |
+|-------|--------------|
+| Obtenir l'admission | 2 à 4 mois |
+| Ouvrir le Sperrkonto | 1 à 2 semaines |
+| Rendez-vous consulaire | 4 à 10 semaines |
+| Traitement du visa | 6 à 12 semaines |
+| **Total** | **5 à 7 mois avant le départ** |
+
+## Erreurs fréquentes à éviter
+
+- Traductions non certifiées par un traducteur assermenté
+- Passeport avec moins de 6 mois de validité résiduelle
+- Sperrkonto insuffisant ou ouvert trop tard
+- Dossier incomplet au rendez-vous consulaire
+
+## Après l'obtention du visa
+
+- Inscription à la mairie (Anmeldung) dans les 14 jours
+- Ouvrir un compte bancaire local
+- S'inscrire à l'assurance maladie étudiante
+- Confirmer votre inscription à l'université
+
+---
+
+De la préparation linguistique à la constitution du dossier, Reisetür 237 vous guide à chaque étape pour maximiser vos chances d'obtenir votre visa étudiant allemand.`,
+  },
+  {
+    id:'8', image:'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=700&q=80',
+    slug:'visa-etudiant-malte-complet',
+    title_fr:"Visa Étudiant Malte : Tout savoir pour étudier en anglais dans l'UE",
+    title_en:"Malta Student Visa: Everything to Study in English in the EU",
+    excerpt_fr:"Malte, pays anglophone de l'UE, attire des milliers d'étudiants africains. Voici comment obtenir votre visa étudiant maltais depuis le Cameroun.",
+    excerpt_en:"Malta attracts thousands of African students. Here's how to get your student visa from Cameroon.",
+    category:'Visa', created_at:'2026-05-28T10:00:00Z', read_time:6,
+    content_fr:`## Pourquoi choisir Malte pour ses études ?
+
+Malte est membre de l'UE, anglophone, avec des programmes universitaires reconnus à coût modéré. Une porte d'entrée stratégique pour les étudiants africains.
+
+## Le Visa Étudiant Maltais (Single Permit)
+
+Les Camerounais doivent obtenir un **permis unique (Single Permit)** combinant autorisation de séjour et de formation, délivré par Identity Malta Agency.
+
+## Conditions d'éligibilité
+
+- Baccalauréat ou équivalent reconnu
+- Lettre d'admission d'un établissement agréé (notre partenaire : **Domain Academy**, Mosta)
+- Anglais **B2 minimum**
+- Ressources : minimum **500 €/mois** de séjour
+
+## Documents requis
+
+### Personnels
+- Passeport biométrique valide
+- 2 photos biométriques
+- Acte de naissance traduit en anglais
+- Casier judiciaire vierge traduit en anglais
+
+### Académiques
+- Lettre d'admission officielle de Domain Academy
+- Baccalauréat + traduction en anglais
+- Relevés de notes + traduction
+
+### Financiers
+- Relevé bancaire des 3 derniers mois
+- Ou lettre de prise en charge
+
+### Médicaux
+- Bilan médical de moins de 3 mois
+- Vaccinations à jour
+
+## Délais et coûts
+
+| Étape | Détail |
+|-------|--------|
+| Frais de dossier | 280,50 € (Single Permit) |
+| Traitement | 6 à 10 semaines |
+
+## Avantages du visa maltais
+
+- Programme en **anglais** — pas d'allemand requis
+- Coût de vie **abordable** (loyers 350–600 €/mois)
+- **Diplôme européen** reconnu dans toute l'UE
+- Possibilité de travailler **20h/semaine** pendant les études
+- Accès à l'espace Schengen
+
+---
+
+Reisetür 237 est en partenariat direct avec Domain Academy à Malte. Nous gérons votre admission, votre dossier visa et votre logement — de Yaoundé jusqu'à La Valette.`,
+  },
+  {
+    id:'9', image:'https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?w=700&q=80',
+    slug:'visa-ausbildung-formation-professionnelle',
+    title_fr:"Visa Ausbildung : Comment obtenir votre visa de formation professionnelle en Allemagne",
+    title_en:"Ausbildung Visa: How to Get Your Vocational Training Visa for Germany",
+    excerpt_fr:"Le visa Ausbildung est différent du visa étudiant. Découvrez ses spécificités, les documents requis et pourquoi c'est la voie royale vers l'emploi en Allemagne.",
+    excerpt_en:"The Ausbildung visa differs from the student visa. Learn why it's the best path to employment in Germany.",
+    category:'Visa', created_at:'2026-05-25T10:00:00Z', read_time:7,
+    content_fr:`## Qu'est-ce que le Visa Ausbildung ?
+
+Le **Visa Ausbildung** est un visa national Type D lié à un **contrat de formation signé avec un employeur allemand**. Vous êtes à la fois en formation et salarié dès le premier jour.
+
+## Pourquoi c'est avantageux ?
+
+- **Rémunération immédiate** : 800 à 1 500 €/mois selon la filière
+- **Pas de Sperrkonto** : votre salaire justifie vos ressources
+- **Emploi garanti** à l'issue de la formation
+- **Titre de séjour** évolutif vers une résidence permanente
+- **Regroupement familial** possible après 2 ans
+
+## Filières disponibles via Reisetür 237
+
+| Filière | Niveau langue | Salaire formation |
+|---------|--------------|------------------|
+| Pflegefachfrau/mann (Soins) | B2 | 1 200 – 1 500 €/mois |
+| Elektriker/in (Électricien) | B1 | 800 – 1 200 €/mois |
+| Hotelkaufmann/-frau | B2 | 942 – 1 176 €/mois |
+| Koch/Köchin (Cuisinier) | B1 | 800 – 1 100 €/mois |
+| Kfz-Mechatroniker/in | B1 | 1 066 – 1 279 €/mois |
+
+## Conditions d'éligibilité
+
+- Contrat d'Ausbildung signé avec un employeur allemand
+- Niveau de langue certifié (B1 ou B2 selon la filière)
+- Baccalauréat ou équivalent reconnu
+- Âge : 18 à 35 ans généralement
+
+## Documents à fournir
+
+### Personnels
+- Passeport biométrique valide
+- 2 photos biométriques
+- Acte de naissance + traduction certifiée en allemand
+- Casier judiciaire n°3 (moins de 3 mois)
+
+### De formation
+- **Contrat d'Ausbildung original** signé
+- Attestation de l'employeur confirmant le poste
+- Description de la formation
+
+### Académiques
+- Baccalauréat + traduction assermentée
+- Relevés de notes + traductions
+
+### Linguistiques
+- Certificat B1 ou B2 (telc, Goethe, ÖSD, ECL)
+
+## Le processus avec Reisetür 237
+
+### Étape 1 — Formation linguistique
+A1 → B2 en 8 mois chez Reisetür 237 Language Center.
+
+### Étape 2 — Recherche d'employeur
+Reisetür 237 prospecte ses partenaires allemands pour vous trouver un contrat adapté.
+
+### Étape 3 — Constitution du dossier
+CV Lebenslauf, Motivationsschreiben, traductions officielles.
+
+### Étape 4 — Visa et départ
+Accompagnement pour le dépôt à l'ambassade et la préparation de l'entretien consulaire.
+
+## Délais à prévoir
+
+| Étape | Durée estimée |
+|-------|--------------|
+| Formation A1 → B2 | 8 mois |
+| Recherche du contrat | 1 à 3 mois |
+| Traitement du visa | 2 à 4 mois |
+| **Total** | **11 à 15 mois** |
+
+---
+
+Chaque mois de retard est un mois de moins vers votre avenir en Allemagne. La première étape c'est la langue — et les cours commencent maintenant chez Reisetür 237.`,
+  },
+  {
+    id:'10', image:'https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=700&q=80',
+    slug:'visa-travail-qualifie-fachkrafte',
+    title_fr:"Visa Travail Qualifié (Fachkräfteeinwanderung) : La voie directe vers l'emploi en Allemagne",
+    title_en:"Skilled Worker Visa: The Direct Path to Employment in
