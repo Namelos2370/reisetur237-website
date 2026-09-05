@@ -16,6 +16,7 @@ import MentionsLegales from './pages/legal/MentionsLegales'
 import PolitiqueConfidentialite from './pages/legal/PolitiqueConfidentialite'
 import CGV from './pages/legal/CGV'
 import NotFoundPage from './pages/NotFoundPage'
+import WhatsAppButton from './components/ui/WhatsAppButton'
 
 function PrivateRoute({ children }) {
   const { user, loading } = useAuth()
@@ -35,7 +36,6 @@ function AppRoutes() {
   useAnalytics()
   return (
     <Routes>
-      {/* Site public */}
       <Route path="/"               element={<Layout><HomePage /></Layout>} />
       <Route path="/services"       element={<Layout><ServicesPage /></Layout>} />
       <Route path="/certifications" element={<Layout><CertificationsPage /></Layout>} />
@@ -43,20 +43,12 @@ function AppRoutes() {
       <Route path="/blog"           element={<Layout><BlogPage /></Layout>} />
       <Route path="/blog/:slug"     element={<Layout><ArticlePage /></Layout>} />
       <Route path="/contact"        element={<Layout><ContactPage /></Layout>} />
-
-      {/* Pages légales */}
-      <Route path="/legal/mentions"          element={<Layout><MentionsLegales /></Layout>} />
-      <Route path="/legal/confidentialite"   element={<Layout><PolitiqueConfidentialite /></Layout>} />
-      <Route path="/legal/cgv"               element={<Layout><CGV /></Layout>} />
-
-      {/* Espace candidat */}
+      <Route path="/legal/mentions"        element={<Layout><MentionsLegales /></Layout>} />
+      <Route path="/legal/confidentialite" element={<Layout><PolitiqueConfidentialite /></Layout>} />
+      <Route path="/legal/cgv"             element={<Layout><CGV /></Layout>} />
       <Route path="/candidate/auth"      element={<AuthPage />} />
       <Route path="/candidate/dashboard" element={<PrivateRoute><CandidateDashboard /></PrivateRoute>} />
-
-      {/* Admin */}
       <Route path="/admin/*" element={<AdminRoute><AdminDashboard /></AdminRoute>} />
-
-      {/* 404 */}
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   )
@@ -66,6 +58,7 @@ export default function App() {
   return (
     <AuthProvider>
       <AppRoutes />
+      <WhatsAppButton />
     </AuthProvider>
   )
 }
