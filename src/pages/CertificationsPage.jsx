@@ -3,20 +3,20 @@ import SEOHead from '../components/seo/SEOHead'
 import { useIsMobile } from '../hooks/useIsMobile'
 const NAVY='#1A1A1A',RED='#C0392B',GOLD='#C8A84B'
 const LEVELS=[
-  {level:'A1',label:'Débutant',img:'https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=400&q=80',condition:'Baccalauréat',desc:'Bases de la communication : alphabet, salutations, chiffres, formules courantes.'},
-  {level:'A2',label:'Élémentaire',img:'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&q=80',condition:'Réussite A1',desc:'Conversations simples, vie quotidienne, achats, directions.'},
-  {level:'B1',label:'Intermédiaire',img:'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&q=80',condition:'Réussite A2',desc:'Communication autonome, grammaire intermédiaire, compréhension de textes courants.'},
-  {level:'B2',label:'Avancé',img:'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&q=80',condition:'Réussite B1',desc:"Niveau requis pour visa Allemagne et Ausbildung Pflege. Argumentation avancée."},
-  {level:'C1',label:'Courant',img:'https://images.unsplash.com/photo-1560439514-4e9645039924?w=400&q=80',condition:'Réussite B2',desc:'Maîtrise professionnelle. Rédaction complexe, discours techniques et académiques.'},
+  {level:'A1',label:'Débutant',img:'https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=400&q=80',condition:'Baccalauréat',desc:'Bases de la communication : alphabet, salutations, chiffres, formules courantes.',duration:'2 mois'},
+  {level:'A2',label:'Élémentaire',img:'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&q=80',condition:'Réussite A1',desc:'Conversations simples, vie quotidienne, achats, directions.',duration:'1,5 mois'},
+  {level:'B1',label:'Intermédiaire',img:'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&q=80',condition:'Réussite A2',desc:'Communication autonome, grammaire intermédiaire, compréhension de textes courants.',duration:'1,5 mois'},
+  {level:'B2',label:'Avancé',img:'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&q=80',condition:'Réussite B1',desc:"Niveau requis pour visa Allemagne et Ausbildung Pflege. Argumentation avancée.",duration:'1,5 mois'},
+  {level:'C1',label:'Courant',img:'https://images.unsplash.com/photo-1560439514-4e9645039924?w=400&q=80',condition:'Réussite B2',desc:'Maîtrise professionnelle. Rédaction complexe, discours techniques et académiques.',duration:'1,5 mois'},
 ]
 export default function CertificationsPage(){
   const{i18n}=useTranslation()
   const lang=i18n.language?.slice(0,2)||'fr'
   const isMobile=useIsMobile()
   const L={
-    fr:{badge:'Certifications',title:'Certifications Linguistiques',sub:'Des examens reconnus internationalement',intro:"Centre d'examen agréé à Yaoundé, Reisetür 237 prépare et organise le passage des certifications officielles en langue allemande, du niveau A1 au C1.",levels:'Les niveaux disponibles',duration:'3 mois',condition:"Condition d'accès",diploma:'Diplôme obtenu',test:'Tester mon niveau gratuitement',testSub:"Simulateur d'examen B1/B2 disponible en ligne"},
-    de:{badge:'Zertifizierungen',title:'Sprachzertifizierungen',sub:'International anerkannte Prüfungen',intro:'Reisetür 237 bereitet Kandidaten auf offizielle Deutschzertifizierungen von A1 bis C1 vor.',levels:'Verfügbare Niveaus',duration:'3 Monate',condition:'Zugangsbedingung',diploma:'Erhaltenes Diplom',test:'Mein Niveau kostenlos testen',testSub:'Online B1/B2 Prüfungssimulator'},
-    en:{badge:'Certifications',title:'Language Certifications',sub:'Internationally recognized examinations',intro:'Reisetür 237 prepares and organizes official German language certifications from A1 to C1.',levels:'Available levels',duration:'3 months',condition:'Entry requirement',diploma:'Certificate obtained',test:'Test my level for free',testSub:'Online B1/B2 exam simulator'},
+    fr:{badge:'Certifications',title:'Certifications Linguistiques',sub:'Des examens reconnus internationalement',intro:"Centre d'examen agréé à Yaoundé, Reisetür 237 prépare et organise le passage des certifications officielles en langue allemande, du niveau A1 au C1.",levels:'Les niveaux disponibles',condition:"Condition d'accès",diploma:'Diplôme obtenu',price:'Tarif',test:'Tester mon niveau gratuitement',testSub:"Simulateur d'examen B1/B2 disponible en ligne"},
+    de:{badge:'Zertifizierungen',title:'Sprachzertifizierungen',sub:'International anerkannte Prüfungen',intro:'Reisetür 237 bereitet Kandidaten auf offizielle Deutschzertifizierungen von A1 bis C1 vor.',levels:'Verfügbare Niveaus',condition:'Zugangsbedingung',diploma:'Erhaltenes Diplom',price:'Preis',test:'Mein Niveau kostenlos testen',testSub:'Online B1/B2 Prüfungssimulator'},
+    en:{badge:'Certifications',title:'Language Certifications',sub:'Internationally recognized examinations',intro:'Reisetür 237 prepares and organizes official German language certifications from A1 to C1.',levels:'Available levels',condition:'Entry requirement',diploma:'Certificate obtained',price:'Price',test:'Test my level for free',testSub:'Online B1/B2 exam simulator'},
   }[lang]||{}
   return(
     <><SEOHead/>
@@ -57,7 +57,8 @@ export default function CertificationsPage(){
                 <p style={{color:'#64748B',fontSize:isMobile?12:14,lineHeight:1.6,marginBottom:10}}>{item.desc}</p>
                 <div style={{display:'flex',flexDirection:isMobile?'column':'row',gap:isMobile?4:16,flexWrap:'wrap'}}>
                   <span style={{fontSize:12,color:'#64748B'}}>📋 <b>{L.condition} :</b> {item.condition}</span>
-                  <span style={{fontSize:12,color:'#64748B'}}>⏱ <b>Durée :</b> {L.duration}</span>
+                  <span style={{fontSize:12,color:'#64748B'}}>⏱ <b>Durée :</b> {item.duration}</span>
+                  <span style={{fontSize:12,color:'#64748B'}}>💰 <b>{L.price} :</b> <span style={{color:RED,fontWeight:700}}>45 000 XAF</span></span>
                   <span style={{fontSize:12,color:'#64748B'}}>🏆 <b>{L.diploma} :</b> Attestation {item.level}</span>
                 </div>
               </div>
@@ -65,7 +66,7 @@ export default function CertificationsPage(){
           ))}
         </div>
         <div style={{background:'#F7F8FC',borderRadius:12,padding:'18px',marginTop:24,textAlign:'center',border:'1.5px solid #E2E8F0'}}>
-          <p style={{color:'#64748B',fontSize:14}}>Parcours complet <b style={{color:NAVY}}>A1 → C1</b> en <b style={{color:RED,fontFamily:"'Playfair Display',serif",fontSize:18}}>15 mois</b></p>
+<p style={{color:'#64748B',fontSize:14}}>Parcours complet <b style={{color:NAVY}}>A1 → C1</b> en <b style={{color:RED,fontFamily:"'Playfair Display',serif",fontSize:18}}>8 mois</b></p>
         </div>
       </div>
     </div></>
