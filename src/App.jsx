@@ -6,6 +6,7 @@ import HomePage from './pages/HomePage'
 import ServicesPage from './pages/ServicesPage'
 import CertificationsPage from './pages/CertificationsPage'
 import PartnershipsPage from './pages/PartnershipsPage'
+import AboutPage from './pages/AboutPage'
 import BlogPage from './pages/blog/BlogPage'
 import ArticlePage from './pages/blog/ArticlePage'
 import { ContactPage } from './pages/StubPages'
@@ -39,6 +40,7 @@ function AppRoutes() {
       <Route path="/"               element={<Layout><HomePage /></Layout>} />
       <Route path="/services"       element={<Layout><ServicesPage /></Layout>} />
       <Route path="/certifications" element={<Layout><CertificationsPage /></Layout>} />
+      <Route path="/about" element={<Layout><AboutPage /></Layout>} />
       <Route path="/partnerships"   element={<Layout><PartnershipsPage /></Layout>} />
       <Route path="/blog"           element={<Layout><BlogPage /></Layout>} />
       <Route path="/blog/:slug"     element={<Layout><ArticlePage /></Layout>} />
