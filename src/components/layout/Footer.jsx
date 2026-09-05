@@ -41,7 +41,7 @@ export default function Footer() {
               </a>
               {/* Chaîne WhatsApp */}
               <a href="https://whatsapp.com/channel/0029Vb64m3L3LdQSQVbzjD37" target="_blank" rel="noopener noreferrer"
-                title="Notre chaîne WhatsApp"
+                title="Rejoignez notre chaîne WhatsApp"
                 className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center hover:bg-red transition-colors duration-150">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 18a8 8 0 110-16 8 8 0 010 16zm-1-5h2v2h-2v-2zm0-8h2v6h-2V7z"/>
@@ -92,7 +92,7 @@ export default function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start gap-2 text-white/60 text-sm font-body">
                 <MapPin size={14} className="mt-0.5 shrink-0 text-gold" />
-                <span>Yaoundé, Cameroun — Essos</span>
+                <span>Yaoundé, Cameroun — Essos,Avenue Descente hopital de la caisse</span>
               </li>
               <li className="flex items-center gap-2 text-white/60 text-sm font-body">
                 <Mail size={14} className="shrink-0 text-gold" />
