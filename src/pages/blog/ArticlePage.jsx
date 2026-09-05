@@ -36,10 +36,8 @@ export default function ArticlePage() {
 
   useEffect(() => {
     setLoading(true)
-    // Chercher dans les articles locaux d'abord
     const local = ALL_ARTICLES.find(a => a.slug === slug || a.id === slug)
     if (local) { setArticle(local); setLoading(false); return }
-    // Puis Supabase
     supabase.from('articles').select('*').eq('published',true).or(`slug.eq.${slug},id.eq.${slug}`).single()
       .then(({ data }) => {
         if (data) setArticle(data)
@@ -54,10 +52,10 @@ export default function ArticlePage() {
   const related = ALL_ARTICLES.filter(a => a.id !== article?.id && a.category === article?.category).slice(0,3)
 
   const L = {
-    fr: { back:'Retour au blog', readMore:'Lire la suite', readTime:'min de lecture', related:'Articles similaires', cta:'Déposer ma candidature' },
-    de: { back:'Zurück zum Blog', readMore:'Weiterlesen', readTime:'Min. Lesezeit', related:'Ähnliche Artikel', cta:'Bewerbung einreichen' },
-    en: { back:'Back to blog', readMore:'Read more', readTime:'min read', related:'Related articles', cta:'Submit my application' },
-  }[lang] || { back:'Retour', readMore:'Lire', readTime:'min', related:'Voir aussi', cta:'Candidature' }
+    fr: { back:'Retour au blog', readMore:'Lire la suite', readTime:'min de lecture', related:'Articles similaires' },
+    de: { back:'Zurück zum Blog', readMore:'Weiterlesen', readTime:'Min. Lesezeit', related:'Ähnliche Artikel' },
+    en: { back:'Back to blog', readMore:'Read more', readTime:'min read', related:'Related articles' },
+  }[lang] || { back:'Retour', readMore:'Lire', readTime:'min', related:'Voir aussi' }
 
   if (loading) return <div style={{ paddingTop:100, textAlign:'center', color:'#94A3B8', fontFamily:"'DM Sans',sans-serif" }}>Chargement...</div>
   if (!article) return null
@@ -66,6 +64,7 @@ export default function ArticlePage() {
     <>
       <SEOHead />
       <div style={{ paddingTop:62, fontFamily:"'DM Sans',sans-serif" }}>
+
         {/* Hero */}
         <div style={{ background:`linear-gradient(135deg,${NAVY},#1B3E6F)`, padding:'50px 32px 42px', position:'relative', overflow:'hidden' }}>
           <div style={{ position:'absolute', inset:0, opacity:.04, backgroundImage:'linear-gradient(rgba(255,255,255,.6)1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.6)1px,transparent 1px)', backgroundSize:'50px 50px' }}/>
@@ -95,16 +94,28 @@ export default function ArticlePage() {
           />
 
           {/* CTA */}
-          <div style={{ background:`linear-gradient(135deg,${NAVY},#1B3E6F)`, borderRadius:16, padding:'28px 32px', marginTop:40, display:'flex', alignItems:'center', justifyContent:'space-between', flexWrap:'wrap', gap:16 }}>
-            <div>
-              <p style={{ color:GOLD, fontSize:11, fontWeight:700, textTransform:'uppercase', letterSpacing:'.14em', marginBottom:6 }}>Reisetür 237</p>
-              <p style={{ color:'#fff', fontSize:16, fontWeight:600 }}>
-                {lang==='fr'?'Prêt à démarrer votre projet ?':lang==='de'?'Bereit, Ihr Projekt zu starten?':'Ready to start your project?'}
+          <div style={{ background:`linear-gradient(135deg,${NAVY},#1B3E6F)`, borderRadius:16, padding:'32px', marginTop:40 }}>
+            <div style={{ textAlign:'center', marginBottom:20 }}>
+              <p style={{ color:GOLD, fontSize:11, fontWeight:700, textTransform:'uppercase', letterSpacing:'.14em', marginBottom:8 }}>
+                Reisetür 237 — Agence de Mobilité & Centre de Langue
+              </p>
+              <h3 style={{ fontFamily:"'Playfair Display',serif", fontSize:'clamp(18px,3vw,26px)', color:'#fff', marginBottom:10 }}>
+                Prêt à concrétiser votre projet ?
+              </h3>
+              <p style={{ color:'rgba(255,255,255,0.6)', fontSize:14, maxWidth:480, margin:'0 auto 20px' }}>
+                Ne laissez pas le temps décider à votre place. Déposez votre dossier aujourd'hui et un conseiller Reisetür 237 vous recontacte sous 48h.
               </p>
             </div>
-            <Link to="/contact" style={{ background:RED, color:'#fff', textDecoration:'none', borderRadius:10, padding:'12px 24px', fontSize:14, fontWeight:700, boxShadow:'0 4px 16px rgba(192,57,43,0.38)', display:'inline-flex', alignItems:'center', gap:6, whiteSpace:'nowrap' }}>
-              {L.cta} →
-            </Link>
+            <div style={{ display:'flex', justifyContent:'center', gap:12, flexWrap:'wrap' }}>
+              <Link to="/contact" style={{ background:RED, color:'#fff', textDecoration:'none', borderRadius:10, padding:'12px 24px', fontSize:14, fontWeight:700, display:'inline-flex', alignItems:'center', gap:6 }}>
+                📋 Déposer ma candidature →
+              </Link>
+              <a href="https://wa.me/237620107489?text=Bonjour%2C%20j%27ai%20lu%20votre%20article%20et%20je%20souhaite%20en%20savoir%20plus%20sur%20vos%20services."
+                target="_blank" rel="noopener noreferrer"
+                style={{ background:'#25D366', color:'#fff', textDecoration:'none', borderRadius:10, padding:'12px 24px', fontSize:14, fontWeight:700, display:'inline-flex', alignItems:'center', gap:6 }}>
+                📲 Nous écrire sur WhatsApp
+              </a>
+            </div>
           </div>
 
           {/* Articles liés */}
