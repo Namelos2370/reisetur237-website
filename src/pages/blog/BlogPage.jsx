@@ -446,7 +446,7 @@ Ne vous limitez pas à Pflege si ce n'est pas votre passion. Il y a plein de fil
 Patrick fait partie de la promotion mixte Reisetür 237 — première cohorte à inclure des profils non-médicaux placés avec succès en Allemagne.`,
   },
   {
-    id:'7', image:'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=700&q=80',
+    https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=700&q=80
     slug:'visa-etudiant-allemagne-complet',
     title_fr:"Visa Étudiant Allemagne : Guide complet pour les Camerounais",
     title_en:"Germany Student Visa: Complete Guide for Cameroonians",
