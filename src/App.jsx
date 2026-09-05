@@ -3,6 +3,7 @@ import { AuthProvider, useAuth } from './hooks/useAuth'
 import { useAnalytics } from './hooks/useAnalytics'
 import Layout from './components/layout/Layout'
 import HomePage from './pages/HomePage'
+import AboutPage from './pages/AboutPage'
 import ServicesPage from './pages/ServicesPage'
 import CertificationsPage from './pages/CertificationsPage'
 import PartnershipsPage from './pages/PartnershipsPage'
@@ -38,6 +39,7 @@ function AppRoutes() {
   return (
     <Routes>
       <Route path="/"               element={<Layout><HomePage /></Layout>} />
+      <Route path="/about" element={<Layout><AboutPage /></Layout>} />
       <Route path="/services"       element={<Layout><ServicesPage /></Layout>} />
       <Route path="/certifications" element={<Layout><CertificationsPage /></Layout>} />
       <Route path="/about" element={<Layout><AboutPage /></Layout>} />
