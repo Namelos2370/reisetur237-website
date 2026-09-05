@@ -70,11 +70,11 @@ Vous souhaitez démarrer votre parcours Ausbildung ? Contactez Reisetür 237 dè
   {
     id:'2', image:'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=700&q=80',
     slug:'visa-etudiant-allemagne-documents',
-    title_fr:"Visa étudiant Allemagne : la liste complète des documents",
-    title_de:"Studentenvisum Deutschland: die vollständige Dokumentenliste",
-    title_en:"Germany Student Visa: the complete document checklist",
-    excerpt_fr:"Dossier complet, délais, rendez-vous consulaire — tout ce qu'il faut préparer pour votre visa étudiant vers l'Allemagne.",
-    excerpt_en:"Complete file, deadlines, consulate appointment — everything to prepare for your student visa.",
+    title_fr:'Visa étudiant Allemagne : la liste complète des documents',
+    title_de:'Studentenvisum Deutschland: die vollständige Dokumentenliste',
+    title_en:'Germany Student Visa: the complete document checklist',
+    excerpt_fr:'Dossier complet, délais, rendez-vous consulaire — tout ce qu'il faut préparer pour votre visa étudiant vers l'Allemagne.',
+    excerpt_en:'Complete file, deadlines, consulate appointment — everything to prepare for your student visa.',
     category:'Visa', created_at:'2026-05-10T10:00:00Z', read_time:6,
     content_fr:`## Le visa national allemand (Type D)
 
@@ -116,9 +116,9 @@ Reisetür 237 vérifie et constitue votre dossier complet pour maximiser vos cha
   {
     id:'3', image:'https://images.unsplash.com/photo-1527613426441-4da17471b66d?w=700&q=80',
     slug:'temoignage-marie-infirmiere-berlin',
-    title_fr:"Témoignage : Marie-Noëlle, infirmière à Berlin grâce à Reisetür 237",
-    title_de:"Erfahrungsbericht: Marie-Noëlle, Krankenschwester in Berlin",
-    title_en:"Testimonial: Marie-Noëlle, nurse in Berlin thanks to Reisetür 237",
+    title_fr:'Témoignage : Marie-Noëlle, infirmière à Berlin grâce à Reisetür 237',
+    title_de:'Erfahrungsbericht: Marie-Noëlle, Krankenschwester in Berlin',
+    title_en:'Testimonial: Marie-Noëlle, nurse in Berlin thanks to Reisetür 237',
     excerpt_fr:"\"Je suis partie de Yaoundé avec zéro expérience en allemand. Aujourd'hui je travaille dans une clinique à Berlin.\"",
     excerpt_en:"\"I left Yaoundé with zero German experience. Today I work in a Berlin clinic.\"",
     category:'Témoignages', created_at:'2026-05-05T10:00:00Z', read_time:4,
@@ -151,10 +151,10 @@ Reisetür 237 vérifie et constitue votre dossier complet pour maximiser vos cha
   {
     id:'4', image:'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=700&q=80',
     slug:'temoignages-groupe-formation-allemagne',
-    title_fr:"Ils sont partis ensemble : 3 candidats, une même école à Berlin",
-    title_de:"Sie gingen zusammen: 3 Kandidaten, eine Schule in Berlin",
-    title_en:"They left together: 3 candidates, one school in Berlin",
-    excerpt_fr:"Jean-Paul, Honorine et Leslie ont suivi le même parcours chez Reisetür 237 et se retrouvent aujourd'hui dans la même école à Berlin.",
+    title_fr:'Ils sont partis ensemble : 3 candidats, une même école à Berlin',
+    title_de:'Sie gingen zusammen: 3 Kandidaten, eine Schule in Berlin',
+    title_en:'They left together: 3 candidates, one school in Berlin',
+    excerpt_fr:'Jean-Paul, Honorine et Leslie ont suivi le même parcours chez Reisetür 237 et se retrouvent aujourd'hui dans la même école à Berlin.',
     excerpt_en:"Jean-Paul, Honorine and Leslie followed the same path at Reisetür 237.",
     category:'Témoignages', created_at:'2026-04-25T10:00:00Z', read_time:5,
     content_fr:`## Trois amis, un même rêve, un même départ
@@ -175,9 +175,9 @@ Reisetür 237 vérifie et constitue votre dossier complet pour maximiser vos cha
   {
     id:'5', image:'https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=700&q=80',
     slug:'temoignages-formations-differentes',
-    title_fr:"Deux parcours différents, deux réussites : Yvan et Valerie",
-    title_de:"Zwei verschiedene Wege, zwei Erfolge: Yvan und Valerie",
-    title_en:"Two different paths, two successes: Yvan and Valerie",
+    title_fr:'Deux parcours différents, deux réussites : Yvan et Valerie',
+    title_de:'Zwei verschiedene Wege, zwei Erfolge: Yvan und Valerie',
+    title_en:'Two different paths, two successes: Yvan and Valerie',
     excerpt_fr:"Yvan est en Ausbildung à Hambourg. Valerie suit une formation en hôtellerie à Malte. Deux profils, une même agence.",
     excerpt_en:"Yvan is in Hamburg. Valerie is studying hospitality in Malta. Two profiles, one agency.",
     category:'Témoignages', created_at:'2026-04-15T10:00:00Z', read_time:5,
